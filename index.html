@@ -5,71 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shri Dr. R. G. Rathod Arts & Science College | Student Platform</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./style.css">
 
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<!-- Header -->
+<!-- ================= HEADER ================= -->
 <header class="main-header">
     <div class="container header-content">
+
         <div class="college-brand">
-            <h1 class="college-name">Shri Dr. R. G. Rathod Arts and Science College</h1>
+            <h1 class="college-name">
+                Shri Dr. R. G. Rathod Arts and Science College
+            </h1>
             <p class="college-location">Murtizapur</p>
+
+            <p class="owner-badge">
+                Managed by <span>ADITYA SHINDE</span>
+            </p>
         </div>
 
         <nav class="main-nav">
             <ul class="nav-list">
-                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#files" class="nav-link"><i class="fas fa-folder"></i> Files</a></li>
+                <li>
+                    <a href="#home" class="nav-link active">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#files" class="nav-link">
+                        <i class="fas fa-folder"></i> Files
+                    </a>
+                </li>
             </ul>
         </nav>
+
     </div>
 </header>
 
-<!-- Main Content -->
+<!-- ================= MAIN ================= -->
 <main class="container main-content">
 
-    <!-- HOME (Now includes Updates) -->
+    <!-- HOME -->
     <section id="home" class="section active-section">
 
-        <div class="section-header">
-            <h2>Welcome Students</h2>
-            <div class="section-divider"></div>
+        <!-- HERO -->
+        <div class="hero-box">
+            <h1>Student Information Portal</h1>
+            <p>Shri Dr. R. G. Rathod Arts & Science College, Murtizapur</p>
+            <span>Updates • Notices • Academic Resources</span>
         </div>
 
-        <!-- Profile / Ownership (kept) -->
+        <!-- INTRO -->
         <div class="welcome-message">
             <p>
-                Welcome to the student platform of Shri Dr. R. G. Rathod Arts and Science College, Murtizapur.
-                This platform provides transparent access to important college updates and academic resources.
+                This platform provides transparent access to official college notices
+                and academic resources for students.
             </p>
 
             <div class="ownership-note">
                 <p>
                     <i class="fas fa-user-circle"></i>
                     <strong>Platform Profile:</strong>
-                    Created and maintained by <strong>Aditya Shinde</strong>
+                    Independently created & maintained by <strong>Aditya Shinde</strong>
                 </p>
             </div>
         </div>
 
-        <!-- 🔔 UPDATES INSIDE HOME -->
-        <div class="section-header" style="margin-top: 3rem;">
+        <!-- UPDATES -->
+        <div class="section-header" style="margin-top:3rem;">
             <h2>Latest Updates & Notices</h2>
             <div class="section-divider"></div>
             <p class="section-subtitle">Official announcements</p>
         </div>
 
-        <div id="noticesContainer" class="notices-container">
-            <!-- Notices rendered by JavaScript -->
-        </div>
-
+        <div id="noticesContainer" class="notices-container"></div>
     </section>
 
     <!-- FILES -->
@@ -80,25 +98,22 @@
         </div>
 
         <div class="drive-info">
-            <p>
-                <i class="fas fa-info-circle"></i>
-                Files are hosted on Google Drive
-            </p>
+            <p><i class="fas fa-info-circle"></i> Files are hosted on Google Drive</p>
         </div>
 
         <div class="drive-embed">
             <iframe
                 src="https://drive.google.com/embeddedfolderview?id=12bg4aVC9eK7j_CMal8UGBGoebEP2G5Dz#list"
-                frameborder="0"
                 width="100%"
-                height="500">
+                height="500"
+                frameborder="0">
             </iframe>
         </div>
     </section>
 
 </main>
 
-<!-- Footer -->
+<!-- ================= FOOTER ================= -->
 <footer class="main-footer">
     <div class="container footer-content">
         <div class="footer-college-info">
@@ -107,9 +122,9 @@
         </div>
 
         <div class="footer-ownership">
-            <p><strong>Website created and maintained by Aditya Shinde</strong></p>
+            <p><strong>Website created and maintained by ADITYA SHINDE</strong></p>
             <p class="footer-note">
-                Independent student platform. Not officially affiliated with college administration.
+                Independent student platform. Not officially affiliated with the college.
             </p>
         </div>
     </div>
@@ -119,6 +134,6 @@
     </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="./script.js"></script>
 </body>
-</html>
+</html> 
