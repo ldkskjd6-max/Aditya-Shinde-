@@ -1,305 +1,138 @@
-/* Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #2980b9;
-    --light-color: #ecf0f1;
-    --dark-color: #2c3e50;
-    --success-color: #27ae60;
-    --danger-color: #e74c3c;
-    --gray-color: #7f8c8d;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --border-radius: 8px;
-}
-
 body {
     font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
+    background: #f4f6f8;
     color: #333;
-    background-color: #f9f9f9;
 }
 
 .container {
-    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     padding: 0 20px;
 }
 
-/* Header */
+/* ===== HEADER ===== */
 .main-header {
-    background-color: var(--primary-color);
+    background: #2c3e50;
     color: white;
-    padding: 1rem 0;
-    box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: all 0.35s ease;
 }
 
 .header-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-}
-
-.college-brand {
-    text-align: center;
+    padding: 1rem 0;
 }
 
 .college-name {
     font-family: 'Roboto Slab', serif;
     font-size: 1.8rem;
-    font-weight: 600;
+    transition: 0.35s;
 }
 
 .college-location {
-    font-size: 1rem;
-    color: var(--light-color);
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
-/* Navigation */
-.main-nav {
-    width: 100%;
+.owner-badge {
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
 }
 
+.owner-badge span {
+    color: #f1c40f;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* NAV */
 .nav-list {
-    display: flex;
-    justify-content: center;
     list-style: none;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.8rem;
 }
 
 .nav-link {
     color: white;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    transition: 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
 }
 
+.nav-link.active,
 .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background: #3498db;
 }
 
-.nav-link.active {
-    background-color: var(--secondary-color);
+/* ===== SHRINK ON SCROLL ===== */
+.main-header.shrink {
+    padding: 0.2rem 0;
 }
 
-.owner-login-btn {
-    background: transparent;
-    color: white;
-    border: 2px solid var(--secondary-color);
-    padding: 0.5rem 1.5rem;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.owner-login-btn:hover {
-    background-color: var(--secondary-color);
-}
-
-/* Main Content */
-.main-content {
-    padding: 2rem 0;
-    min-height: calc(100vh - 280px);
-}
-
-.section {
+.main-header.shrink .college-location,
+.main-header.shrink .owner-badge {
     display: none;
-    animation: fadeIn 0.4s ease;
 }
 
-.section.active-section {
-    display: block;
+.main-header.shrink .college-name {
+    font-size: 1.2rem;
 }
 
-.section-header {
+/* ===== HERO ===== */
+.hero-box {
+    background: linear-gradient(135deg, #1d2671, #c33764);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
 }
 
-.section-header h2 {
-    font-family: 'Roboto Slab', serif;
-    font-size: 2.2rem;
-    color: var(--primary-color);
-}
-
-.section-divider {
-    height: 4px;
-    width: 100px;
-    background-color: var(--secondary-color);
-    margin: 1rem auto;
-}
-
-.section-subtitle {
-    color: var(--gray-color);
-    font-size: 1.1rem;
-}
-
-/* Home */
-.welcome-message {
+/* ===== CONTENT ===== */
+.welcome-message,
+.notice-card,
+.drive-embed {
     background: white;
     padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    margin-bottom: 2.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
 }
 
-.ownership-note {
-    background-color: #e8f4fc;
-    border-left: 4px solid var(--secondary-color);
-    padding: 1rem;
-    margin-top: 1.5rem;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.feature-card {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    text-align: center;
-}
-
-.feature-card i {
-    font-size: 3rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-}
-
-/* Updates */
 .notices-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.notice-card {
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
+    gap: 1.5rem;
 }
 
 .notice-header {
-    background-color: var(--primary-color);
+    background: #2c3e50;
     color: white;
     padding: 1rem;
+    border-radius: 8px 8px 0 0;
 }
 
 .notice-body {
-    padding: 1.5rem;
-}
-
-.delete-notice {
-    background-color: var(--danger-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* Files */
-.drive-info {
-    background-color: #e8f4fc;
     padding: 1rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
-    text-align: center;
 }
 
-.drive-embed {
-    background: white;
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-}
-
-/* Owner Panel */
-.owner-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-}
-
-.add-notice-form,
-.current-notices {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-}
-
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-}
-
-.btn-primary {
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-}
-
-/* Footer */
+/* ===== FOOTER ===== */
 .main-footer {
-    background-color: var(--primary-color);
+    background: #2c3e50;
     color: white;
     margin-top: 3rem;
 }
 
 .footer-bottom {
-    background: rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 1rem;
-}
-
-/* Animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .owner-actions {
-        grid-template-columns: 1fr;
-    }
-
-    .features-grid,
-    .notices-container {
-        grid-template-columns: 1fr;
-    }
-
-    .nav-list {
-        flex-direction: column;
-    }
+    background: rgba(0,0,0,0.2);
 }
