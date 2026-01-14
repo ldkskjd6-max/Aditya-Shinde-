@@ -23,7 +23,7 @@ const defaultNotices = [
     {
         id: 1,
         date: "2023-11-15",
-        title: "Annual Sports Day",
+        title: "welcome Aryan",
         description: "The annual sports day will be held next week. All students are encouraged to participate."
     },
     {
