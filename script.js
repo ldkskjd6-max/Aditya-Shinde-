@@ -2,17 +2,10 @@ console.log("JS is running in browser");
 // Website created and maintained by Aditya Shinde
 
 /* =====================
-   CONFIG
-===================== */
-
-const OWNER_PASSWORD = "Adi@1177";
-
-/* =====================
    STATE
 ===================== */
 
 let currentSection = "home";
-let isOwnerLoggedIn = false;
 
 /* =====================
    NOTICES (GITHUB CONTROLLED)
@@ -43,10 +36,6 @@ const notices = [
 
 const sections = document.querySelectorAll(".section");
 const navLinks = document.querySelectorAll(".nav-link");
-
-const ownerLoginBtn = document.getElementById("ownerLoginBtn");
-const ownerPanel = document.getElementById("ownerPanel");
-
 const noticesContainer = document.getElementById("noticesContainer");
 
 /* =====================
@@ -54,9 +43,10 @@ const noticesContainer = document.getElementById("noticesContainer");
 ===================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
     setupNavigation();
-    setupOwnerLogin();
     renderNotices();
 });
 
@@ -68,6 +58,7 @@ function setupNavigation() {
     navLinks.forEach(link => {
         link.addEventListener("click", e => {
             e.preventDefault();
+
             const target = link.getAttribute("href").substring(1);
 
             navLinks.forEach(n => n.classList.remove("active"));
@@ -79,9 +70,11 @@ function setupNavigation() {
 }
 
 function showSection(id) {
-    sections.forEach(sec => sec.classList.remove("active-section"));
-    const target = document.getElementById(id);
+    sections.forEach(sec =>
+        sec.classList.remove("active-section")
+    );
 
+    const target = document.getElementById(id);
     if (target) {
         target.classList.add("active-section");
         currentSection = id;
@@ -91,45 +84,7 @@ function showSection(id) {
 }
 
 /* =====================
-   OWNER LOGIN (INFO ONLY)
-===================== */
-
-function setupOwnerLogin() {
-    ownerLoginBtn.addEventListener("click", () => {
-        if (isOwnerLoggedIn) {
-            isOwnerLoggedIn = false;
-            ownerPanel.style.display = "none";
-            ownerLoginBtn.innerHTML = `<i class="fas fa-lock"></i> Owner Login`;
-            showSection("home");
-            return;
-        }
-
-        const pass = prompt("Enter owner password");
-
-        if (pass === OWNER_PASSWORD) {
-            isOwnerLoggedIn = true;
-            ownerPanel.style.display = "block";
-            ownerLoginBtn.innerHTML = `<i class="fas fa-unlock"></i> Logout`;
-            showSection("ownerPanel");
-
-            ownerPanel.innerHTML = `
-                <div class="section-header">
-                    <h2>Owner Panel</h2>
-                    <p>
-                        Notices are published by updating code on GitHub
-                        and redeploying the site.
-                    </p>
-                    <p><strong>Owner:</strong> Aditya Shinde</p>
-                </div>
-            `;
-        } else if (pass !== null) {
-            alert("Incorrect password!");
-        }
-    });
-}
-
-/* =====================
-   RENDER NOTICES
+   RENDER NOTICES (PUBLIC)
 ===================== */
 
 function renderNotices() {
@@ -138,7 +93,8 @@ function renderNotices() {
     noticesContainer.innerHTML = "";
 
     if (notices.length === 0) {
-        noticesContainer.innerHTML = "<p>No notices available.</p>";
+        noticesContainer.innerHTML =
+            "<p>No notices available.</p>";
         return;
     }
 
