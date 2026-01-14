@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shri Dr. R. G. Rathod Arts & Science College | Student Platform</title>
+
     <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<!-- Header & Navigation -->
+<!-- Header -->
 <header class="main-header">
     <div class="container header-content">
         <div class="college-brand">
@@ -23,88 +26,64 @@
         <nav class="main-nav">
             <ul class="nav-list">
                 <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#updates" class="nav-link"><i class="fas fa-bullhorn"></i> Updates</a></li>
                 <li><a href="#files" class="nav-link"><i class="fas fa-folder"></i> Files</a></li>
             </ul>
         </nav>
-
-        <button id="ownerLoginBtn" class="owner-login-btn">
-            <i class="fas fa-lock"></i> Owner Login
-        </button>
     </div>
 </header>
 
 <!-- Main Content -->
 <main class="container main-content">
 
-    <!-- Home Section -->
+    <!-- HOME (Now includes Updates) -->
     <section id="home" class="section active-section">
+
         <div class="section-header">
             <h2>Welcome Students</h2>
             <div class="section-divider"></div>
         </div>
 
+        <!-- Profile / Ownership (kept) -->
         <div class="welcome-message">
             <p>
                 Welcome to the student platform of Shri Dr. R. G. Rathod Arts and Science College, Murtizapur.
-                This portal is designed to keep you connected with college updates and academic resources.
-            </p>
-            <p>
-                This platform focuses on transparency, easy access to notices, and shared learning materials.
+                This platform provides transparent access to important college updates and academic resources.
             </p>
 
             <div class="ownership-note">
                 <p>
-                    <i class="fas fa-code"></i>
-                    <strong>Platform Note:</strong> This student platform is independently created by Aditya Shinde.
+                    <i class="fas fa-user-circle"></i>
+                    <strong>Platform Profile:</strong>
+                    Created and maintained by <strong>Aditya Shinde</strong>
                 </p>
             </div>
         </div>
 
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-newspaper"></i>
-                <h3>Latest Updates</h3>
-                <p>Stay informed with official college notices.</p>
-            </div>
-
-            <div class="feature-card">
-                <i class="fas fa-file-alt"></i>
-                <h3>Study Resources</h3>
-                <p>Access academic files and documents easily.</p>
-            </div>
-
-            <div class="feature-card">
-                <i class="fas fa-lock"></i>
-                <h3>Owner Managed</h3>
-                <p>Only the platform owner can manage notices.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Updates Section -->
-    <section id="updates" class="section">
-        <div class="section-header">
+        <!-- 🔔 UPDATES INSIDE HOME -->
+        <div class="section-header" style="margin-top: 3rem;">
             <h2>Latest Updates & Notices</h2>
             <div class="section-divider"></div>
-            <p class="section-subtitle">Important announcements</p>
+            <p class="section-subtitle">Official announcements</p>
         </div>
 
         <div id="noticesContainer" class="notices-container">
-            <!-- Notices loaded via JavaScript -->
+            <!-- Notices rendered by JavaScript -->
         </div>
+
     </section>
 
-    <!-- Files Section -->
+    <!-- FILES -->
     <section id="files" class="section">
         <div class="section-header">
             <h2>Academic Files & Resources</h2>
             <div class="section-divider"></div>
-            <p class="section-subtitle">All important study materials</p>
         </div>
 
         <div class="drive-info">
-            <p><i class="fas fa-info-circle"></i> All files are hosted on Google Drive</p>
+            <p>
+                <i class="fas fa-info-circle"></i>
+                Files are hosted on Google Drive
+            </p>
         </div>
 
         <div class="drive-embed">
@@ -114,33 +93,6 @@
                 width="100%"
                 height="500">
             </iframe>
-        </div>
-    </section>
-
-    <!-- Owner Panel -->
-    <section id="ownerPanel" class="section" style="display: none;">
-        <div class="section-header">
-            <h2><i class="fas fa-cogs"></i> Owner Panel – Aditya Shinde</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Manage notices</p>
-        </div>
-
-        <div class="owner-actions">
-            <div class="add-notice-form">
-                <h3>Add New Notice</h3>
-
-                <input type="text" id="noticeTitle" placeholder="Notice title" class="form-input">
-                <textarea id="noticeDesc" placeholder="Notice description" class="form-textarea" rows="4"></textarea>
-
-                <button id="addNoticeBtn" class="btn-primary">
-                    <i class="fas fa-plus-circle"></i> Add Notice
-                </button>
-            </div>
-
-            <div class="current-notices">
-                <h3>Current Notices</h3>
-                <div id="ownerNoticesList" class="owner-notices-list"></div>
-            </div>
         </div>
     </section>
 
@@ -156,15 +108,14 @@
 
         <div class="footer-ownership">
             <p><strong>Website created and maintained by Aditya Shinde</strong></p>
-            <p>Made for students by students</p>
             <p class="footer-note">
-                This is an independent student platform and is not officially affiliated with the college.
+                Independent student platform. Not officially affiliated with college administration.
             </p>
         </div>
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; <span id="currentYear"></span> Student Platform. All rights reserved.</p>
+        <p>&copy; <span id="currentYear"></span> Student Platform</p>
     </div>
 </footer>
 
