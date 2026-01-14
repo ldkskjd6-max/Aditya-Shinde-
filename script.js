@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             date: "2026-01-15",
             title: "Welcome Friends",
-            description: "Welcome to Shri Dr. R. G. Rathod Arts and Science College.Friends, I’ve built a Student Information Portal for our college to share updates and study resources.It’s student-managed and made for learning.Do check it out and tell me how it feels 😊— Aditya Shinde"
+            description: "Welcome to Shri Dr. R. G. Rathod Arts and Science College.Friends, I’ve built a Student Information Portal for our college to share updates and study resources.It’s student-managed and made for learning.Do check it out and tell me how it feels — Aditya Shinde"
         },
         {
             date: "2026-01-12",
