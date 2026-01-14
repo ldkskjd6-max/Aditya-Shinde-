@@ -7,14 +7,15 @@ document.getElementById("currentYear").textContent =
 // NOTICES
 const notices = [
     {
-        date: "2026-01-15",
-        title: "Welcome Aryan",
+        date: "2026-01-12",
+        title: "Welcome Friends",
         description: "Welcome to Shri Dr. R. G. Rathod Arts and Science College."
     },
     {
-        date: "2026-01-12",
-        title: "Library Timings Extended",
-        description: "Library will remain open till 8 PM during examination period."
+        date: "",
+        title: "Department of Physics",
+        description: "All the students are hereby informed that As per the University Academic calendar, your semester session started from 26 December 2025,  it is mandatory to attend the classes of Theory and Practical for Internal Assessment and Examination Procedure, attend the classes regularly 
+."
     }
 ];
 
