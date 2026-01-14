@@ -14,8 +14,7 @@ const notices = [
     {
         date: "",
         title: "Department of Physics",
-        description: "All the students are hereby informed that As per the University Academic calendar, your semester session started from 26 December 2025,  it is mandatory to attend the classes of Theory and Practical for Internal Assessment and Examination Procedure, attend the classes regularly 
-."
+        description: "All the students are hereby informed that As per the University Academic calendar, your semester session started from 26 December 2025,  it is mandatory to attend the classes of Theory and Practical for Internal Assessment and Examination Procedure, attend the classes regularly "
     }
 ];
 
