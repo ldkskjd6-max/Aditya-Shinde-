@@ -1,4 +1,4 @@
-console.log("JS is running - Final Version with Search");
+console.log("JS is running - Updated Version");
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded");
@@ -89,140 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ===== IMPROVED PAPERS FETCHING WITH SEARCH =====
-    let allPapers = [];
-    let currentFilter = 'all';
-    let searchTerm = '';
-
-    async function fetchPapers() {
-        try {
-            const response = await fetch('papers.json');
-            if (!response.ok) {
-                throw new Error('Failed to fetch papers');
-            }
-            const data = await response.json();
-            return data.papers;
-        } catch (error) {
-            console.error('Error fetching papers:', error);
-            return [];
-        }
-    }
-
-    function filterPapers(papers, filter, search) {
-        let filtered = papers;
-        
-        // Apply subject filter
-        if (filter !== 'all') {
-            filtered = filtered.filter(paper => paper.subject === filter);
-        }
-        
-        // Apply search
-        if (search.trim() !== '') {
-            const searchLower = search.toLowerCase();
-            filtered = filtered.filter(paper => 
-                paper.title.toLowerCase().includes(searchLower) ||
-                paper.subject.toLowerCase().includes(searchLower) ||
-                paper.year.toString().includes(searchLower)
-            );
-        }
-        
-        return filtered;
-    }
-
-    function renderPapers() {
-        const papersContainer = document.getElementById('papersContainer');
-        const statsContainer = document.getElementById('papersStats');
-        if (!papersContainer) return;
-
-        const filteredPapers = filterPapers(allPapers, currentFilter, searchTerm);
-        
-        // Sort by year (newest first)
-        filteredPapers.sort((a, b) => b.year - a.year);
-
-        // Update stats
-        if (statsContainer) {
-            const totalPapers = allPapers.length;
-            const showingPapers = filteredPapers.length;
-            statsContainer.innerHTML = `📄 Showing ${showingPapers} of ${totalPapers} papers`;
-        }
-
-        if (filteredPapers.length === 0) {
-            papersContainer.innerHTML = `
-                <div class="empty-state">
-                    <i class="fas fa-search"></i>
-                    <p>No papers found matching your criteria.</p>
-                </div>
-            `;
-            return;
-        }
-
-        papersContainer.innerHTML = '';
-        
-        filteredPapers.forEach(paper => {
-            const card = document.createElement('div');
-            card.className = 'paper-card';
-            
-            // Handle spaces in filename
-            const filePath = paper.file.replace(/ /g, '%20');
-            
-            card.innerHTML = `
-                <div class="paper-header">
-                    <h3>${paper.title}</h3>
-                    <div class="paper-meta">
-                        <span class="paper-subject-tag">${paper.subject}</span>
-                    </div>
-                    <span class="paper-year-badge">${paper.year}</span>
-                </div>
-                <div class="paper-body">
-                    <div class="paper-details">
-                        <i class="fas fa-book"></i>
-                        <span>Semester ${paper.semester}</span>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="${filePath}" target="_blank" class="paper-download">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                        <a href="${filePath}" target="_blank" class="paper-preview" title="Preview">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                    </div>
-                </div>
-            `;
-            papersContainer.appendChild(card);
-        });
-    }
-
-    // Load papers
-    const papersContainer = document.getElementById('papersContainer');
-    if (papersContainer) {
-        papersContainer.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner"></i> Loading papers...</div>';
-        
-        fetchPapers().then(papers => {
-            allPapers = papers;
-            renderPapers();
-        });
-    }
-
-    // Search input
-    const searchInput = document.getElementById('searchPapers');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            searchTerm = e.target.value;
-            renderPapers();
-        });
-    }
-
-    // Filter buttons
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentFilter = btn.getAttribute('data-filter');
-            renderPapers();
-        });
-    });
-
     // ===== TAB SWITCHING (Main Navigation) =====
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll(".section");
@@ -270,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hash = window.location.hash.substring(1);
     console.log("Initial hash:", hash);
     
-    if (hash && ["home", "files", "physics"].includes(hash)) {
+    if (hash && ["home", "resources", "physics"].includes(hash)) {
         activateSection(hash);
     } else {
         activateSection("home");
