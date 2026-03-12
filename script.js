@@ -1,4 +1,4 @@
-console.log("JS is running - Debug Mode");
+console.log("JS is running - Final Version");
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded");
@@ -45,60 +45,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // ===== PHYSICS VIDEOS DATA (Unit 4) - AB YEH USE KARO =====
+    // ===== PHYSICS VIDEOS DATA (Unit 4) =====
     const videos = [
-        { 
-            title: "Fundamentals of surface tension", 
-            videoId: "gBWfxWdOaCk" 
-        },
-        { 
-            title: "Surface tension", 
-            videoId: "I8xFVGdkkUU"
-        },
-        { 
-            title: "Molecular theory of surface tension", 
-            videoId: "1nsOVNIiyLA"
-        },
-        { 
-            title: "Surface film", 
-            videoId: "M8wsuln-6Og"
-        },
-        { 
-            title: "Surface energy", 
-            videoId: "FLXURvhLxiY"
-        },
-        { 
-            title: "Access pressure inside soap bubble and liquid drop in air", 
-            videoId: "95Jomq0lvBg"
-        },
-        { 
-            title: "Angle of contact", 
-            videoId: "fLPGkw2rz1o"
-        },
-        { 
-            title: "Rise of Liquid Capillary Tube", 
-            videoId: "HBjc80Zbi7o"
-        },
-        { 
-            title: "Viscosity", 
-            videoId: "sY8hV46aIps"
-        },
-        { 
-            title: "Reynolds Number 'R'", 
-            videoId: "RZ3rLK4bIQ4"
-        },
-        { 
-            title: "Stokes' law", 
-            videoId: "2odVI4Vc5UE"
-        },
-        { 
-            title: "Terminal Velocity", 
-            videoId: "yXqeagd9PTQ"
-        },
-        { 
-            title: "Poiseuille's equation", 
-            videoId: "xwyssfQ6oVc"
-        }
+        { title: "Fundamentals of surface tension", videoId: "gBWfxWdOaCk" },
+        { title: "Surface tension", videoId: "I8xFVGdkkUU" },
+        { title: "Molecular theory of surface tension", videoId: "1nsOVNIiyLA" },
+        { title: "Surface film", videoId: "M8wsuln-6Og" },
+        { title: "Surface energy", videoId: "FLXURvhLxiY" },
+        { title: "Access pressure inside soap bubble and liquid drop in air", videoId: "95Jomq0lvBg" },
+        { title: "Angle of contact", videoId: "fLPGkw2rz1o" },
+        { title: "Rise of Liquid Capillary Tube", videoId: "HBjc80Zbi7o" },
+        { title: "Viscosity", videoId: "sY8hV46aIps" },
+        { title: "Reynolds Number 'R'", videoId: "RZ3rLK4bIQ4" },
+        { title: "Stokes' law", videoId: "2odVI4Vc5UE" },
+        { title: "Terminal Velocity", videoId: "yXqeagd9PTQ" },
+        { title: "Poiseuille's equation", videoId: "xwyssfQ6oVc" }
     ];
 
     // ===== RENDER VIDEO CARDS (EMBEDDED YOUTUBE) =====
@@ -112,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="video-container">
                     <iframe 
                         width="100%" 
-                        height="200" 
+                        height="100%" 
                         src="https://www.youtube.com/embed/${video.videoId}" 
                         title="${video.title}"
                         frameborder="0" 
@@ -128,16 +89,94 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ===== PAPERS FETCHING =====
+    let allPapers = [];
+
+    async function fetchPapers() {
+        try {
+            const response = await fetch('papers.json');
+            if (!response.ok) {
+                throw new Error('Failed to fetch papers');
+            }
+            const data = await response.json();
+            return data.papers;
+        } catch (error) {
+            console.error('Error fetching papers:', error);
+            return [];
+        }
+    }
+
+    function renderPapers(papers, filter = 'all') {
+        const papersContainer = document.getElementById('papersContainer');
+        if (!papersContainer) return;
+
+        let filteredPapers = papers;
+        if (filter !== 'all') {
+            filteredPapers = papers.filter(paper => paper.subject === filter);
+        }
+
+        filteredPapers.sort((a, b) => b.year - a.year);
+
+        if (filteredPapers.length === 0) {
+            papersContainer.innerHTML = '<p style="text-align: center; padding: 2rem;">No papers available for this subject.</p>';
+            return;
+        }
+
+        papersContainer.innerHTML = '';
+        
+        filteredPapers.forEach(paper => {
+            const card = document.createElement('div');
+            card.className = 'paper-card';
+            
+            // Handle spaces in filename
+            const filePath = paper.file.replace(/ /g, '%20');
+            
+            card.innerHTML = `
+                <div class="paper-header">
+                    <h3>${paper.title}</h3>
+                    <span class="paper-year-badge">${paper.year}</span>
+                </div>
+                <div class="paper-body">
+                    <div class="paper-subject">
+                        <i class="fas fa-book"></i> ${paper.subject} - Sem ${paper.semester}
+                    </div>
+                    <a href="${filePath}" target="_blank" class="paper-download">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            `;
+            papersContainer.appendChild(card);
+        });
+    }
+
+    // Load papers
+    const papersContainer = document.getElementById('papersContainer');
+    if (papersContainer) {
+        papersContainer.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner"></i> Loading papers...</div>';
+        
+        fetchPapers().then(papers => {
+            allPapers = papers;
+            renderPapers(allPapers);
+        });
+    }
+
+    // Filter buttons
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            renderPapers(allPapers, filter);
+        });
+    });
+
     // ===== TAB SWITCHING (Main Navigation) =====
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll(".section");
 
     console.log("Nav links found:", navLinks.length);
     console.log("Sections found:", sections.length);
-
-    sections.forEach(section => {
-        console.log("Section ID:", section.id);
-    });
 
     function activateSection(targetId) {
         console.log("Activating section:", targetId);
@@ -175,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // On page load, check URL hash
     const hash = window.location.hash.substring(1);
     console.log("Initial hash:", hash);
     
