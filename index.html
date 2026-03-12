@@ -1,173 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shri Dr. R. G. Rathod Arts & Science College | Student Platform</title>
-
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="./style.css">
-
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <!-- ICONS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shri Dr. R. G. Rathod Arts & Science College | Student Platform</title>
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    /* Minimal base styles – for structure only. Full styling will be added later. */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    /* header, navigation */
+    .main-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .college-brand h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e3a8a;
+    }
+    .college-brand p {
+      color: #475569;
+      font-size: 0.9rem;
+    }
+    .nav-list {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-link {
+      text-decoration: none;
+      color: #334155;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: #1e3a8a;
+      border-bottom-color: #1e3a8a;
+    }
+    /* sections */
+    .section {
+      padding: 3rem 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #3b82f6;
+      margin-top: 0.5rem;
+      border-radius: 2px;
+    }
+    /* notice card */
+    .notice-card {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+      border-left: 6px solid #3b82f6;
+    }
+    .notice-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .notice-title i {
+      color: #3b82f6;
+      font-size: 2rem;
+    }
+    .notice-text {
+      color: #334155;
+      margin-bottom: 1.5rem;
+    }
+    .notice-link {
+      display: inline-block;
+      background: #eef2ff;
+      color: #1e3a8a;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      text-decoration: none;
+      margin: 1rem 0;
+      word-break: break-all;
+    }
+    .notice-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e2e8f0;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+    .notice-date i {
+      margin-right: 0.5rem;
+    }
+    /* resources - year & semester structure */
+    .resources-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .year-block {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .year-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #1e3a8a;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+    }
+    .semester-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .semester-block {
+      background: #f8fafc;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+    }
+    .semester-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .semester-title i {
+      color: #3b82f6;
+    }
+    .subject-list {
+      list-style: none;
+    }
+    .subject-item {
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subject-name {
+      font-weight: 500;
+    }
+    .download-link {
+      color: #3b82f6;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: #eef2ff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      transition: 0.2s;
+    }
+    .download-link:hover {
+      background: #dbeafe;
+    }
+    /* courses section */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .course-card {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+    .course-card:hover {
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    }
+    .course-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e3a8a;
+      margin-bottom: 1.5rem;
+    }
+    .course-semester {
+      margin-bottom: 1.25rem;
+    }
+    .course-semester h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .course-semester ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .course-semester li {
+      background: #f1f5f9;
+      padding: 0.3rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+    /* footer */
+    .main-footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-note {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    /* mobile adjustments */
+    @media (max-width: 640px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav-list {
+        justify-content: center;
+      }
+      .notice-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<!-- ================= HEADER ================= -->
-<header class="main-header">
+  <header class="main-header">
     <div class="container header-content">
-        <div class="college-brand">
-            <h1 class="college-name">Shri Dr. R. G. Rathod Arts and Science College</h1>
-            <p class="college-location">Murtizapur</p>
-            <p class="owner-badge">Managed by <span>ADITYA SHINDE</span></p>
-        </div>
-        <nav class="main-nav">
-            <ul class="nav-list">
-                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#files" class="nav-link"><i class="fas fa-folder"></i> Files</a></li>
-                <li><a href="#physics" class="nav-link"><i class="fas fa-flask"></i> Physics</a></li>
-            </ul>
-        </nav>
+      <div class="college-brand">
+        <h1>Shri Dr. R. G. Rathod Arts & Science College</h1>
+        <p>Murtizapur · Student Platform</p>
+      </div>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#resources" class="nav-link">Resources</a></li>
+          <li><a href="#courses" class="nav-link">Courses</a></li>
+        </ul>
+      </nav>
     </div>
-</header>
+  </header>
 
-<!-- ================= MAIN ================= -->
-<main class="container main-content">
-
-    <!-- HOME SECTION (with new notice) -->
-    <section id="home" class="section active-section">
-        <div class="hero-box">
-            <h1>Student Information Portal</h1>
-            <p>Shri Dr. R. G. Rathod Arts & Science College, Murtizapur</p>
-            <span>Updates • Notices • Academic Resources</span>
+  <main>
+    <!-- HOME SECTION with notice -->
+    <section id="home" class="section">
+      <div class="container">
+        <h2 class="section-title">Announcements</h2>
+        <div class="notice-card">
+          <div class="notice-title">
+            <i class="fas fa-bullhorn"></i>
+            <span>Examination Form Submission</span>
+          </div>
+          <div class="notice-text">
+            <p>All regular <strong>Semester‑II</strong> students and backlog <strong>Semester‑I</strong> students are informed to fill the <strong>Summer 2026 Examination Form</strong> online at:</p>
+            <a href="https://sgbau.ucanapply.com" target="_blank" class="notice-link">
+              <i class="fas fa-external-link-alt"></i> sgbau.ucanapply.com
+            </a>
+            <p style="margin-top: 1rem;">After filling the form, take the printout and submit it to the college office with the required examination fee within the scheduled time.</p>
+            <p>Students must submit the form printout; otherwise the examination seat number will not be issued.</p>
+            <p><span style="background: #fef9c3; padding: 0.2rem 0.5rem; border-radius: 0.25rem;">Some courses may require a late fee of ₹400 while submitting the form.</span></p>
+          </div>
+          <div class="notice-meta">
+            <span class="notice-date"><i class="far fa-calendar-alt"></i> 08 March 2026</span>
+            <span><i class="fas fa-clock"></i> Deadline: as per schedule</span>
+          </div>
         </div>
-
-        <!-- Important Notice Card -->
-        <div class="notice-card important-notice">
-            <div class="notice-header">
-                <i class="fas fa-exclamation-circle"></i>
-                <h2>📢 Important Examination Notice</h2>
-            </div>
-            <div class="notice-body">
-                <p>All regular <strong>Semester-II students</strong> and <strong>backlog Semester-I students</strong> are informed to fill the <strong>Summer 2026 Examination Form</strong> online at:</p>
-                <p class="notice-link">
-                    <a href="https://sgbau.ucanapply.com" target="_blank">https://sgbau.ucanapply.com</a>
-                </p>
-                <div class="notice-details">
-                    <p><i class="fas fa-check-circle"></i> After filling the form, take the printout and submit it to the college office with the required examination fee within the scheduled time.</p>
-                    <p><i class="fas fa-check-circle"></i> Students must submit the form printout; otherwise the examination seat number will not be issued.</p>
-                    <p><i class="fas fa-check-circle"></i> Some courses may require a late fee of <strong>Rs. 400</strong> while submitting the form.</p>
-                </div>
-                <p class="notice-date"><i class="far fa-calendar-alt"></i> Date: 08 March 2026</p>
-            </div>
-        </div>
-
-        <!-- Other notices (existing) -->
-        <div class="section-header" style="margin-top:3rem;">
-            <h2>Latest Updates & Notices</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Official announcements</p>
-        </div>
-        <div id="noticesContainer" class="notices-container"></div>
-
-        <!-- Ownership note (optional) -->
-        <div class="ownership-note">
-            <p><i class="fas fa-user-circle"></i> <strong>Platform Profile:</strong> Independently created & maintained by <strong>Aditya Shinde</strong></p>
-        </div>
+      </div>
     </section>
 
-    <!-- FILES SECTION (restructured with Year, Semester, BSc Year) -->
-    <section id="files" class="section">
-        <div class="section-header">
-            <h2>📚 Previous Year Question Papers</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Select Year, Semester & Class to download papers</p>
-        </div>
-
-        <!-- Year Filter -->
-        <div class="filter-group">
-            <label>Select Year:</label>
-            <div class="year-tabs">
-                <button class="year-btn active" data-year="2024">2024</button>
-                <button class="year-btn" data-year="2025">2025</button>
-                <button class="year-btn" data-year="2026">2026</button>
+    <!-- RESOURCES SECTION (Previous Year Papers) -->
+    <section id="resources" class="section" style="background: #f1f5f9;">
+      <div class="container">
+        <h2 class="section-title">Previous Year Question Papers</h2>
+        <div class="resources-grid">
+          <!-- Year 2026 -->
+          <div class="year-block">
+            <h3 class="year-title">2026</h3>
+            <div class="semester-container">
+              <div class="semester-block">
+                <h4 class="semester-title"><i class="fas fa-book-open"></i> Semester I</h4>
+                <ul class="subject-list">
+                  <li class="subject-item">
+                    <span class="subject-name">Physics</span>
+                    <a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a>
+                  </li>
+                  <li class="subject-item">
+                    <span class="subject-name">Computer Science</span>
+                    <a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a>
+                  </li>
+                  <li class="subject-item">
+                    <span class="subject-name">AEC</span>
+                    <a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a>
+                  </li>
+                  <li class="subject-item">
+                    <span class="subject-name">VSC</span>
+                    <a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a>
+                  </li>
+                  <li class="subject-item">
+                    <span class="subject-name">IKS</span>
+                    <a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="semester-block">
+                <h4 class="semester-title"><i class="fas fa-book"></i> Semester II</h4>
+                <ul class="subject-list">
+                  <li class="subject-item"><span class="subject-name">Physics</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                  <li class="subject-item"><span class="subject-name">Computer Science</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                  <!-- Add more as needed -->
+                </ul>
+              </div>
             </div>
-        </div>
-
-        <!-- Semester Filter -->
-        <div class="filter-group">
-            <label>Select Semester:</label>
-            <div class="semester-tabs">
-                <button class="semester-btn active" data-semester="1">Semester 1</button>
-                <button class="semester-btn" data-semester="2">Semester 2</button>
+          </div>
+          <!-- Year 2025 -->
+          <div class="year-block">
+            <h3 class="year-title">2025</h3>
+            <div class="semester-container">
+              <div class="semester-block">
+                <h4 class="semester-title"><i class="fas fa-book-open"></i> Semester I</h4>
+                <ul class="subject-list">
+                  <li class="subject-item"><span class="subject-name">Physics</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                  <li class="subject-item"><span class="subject-name">Computer Science</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                </ul>
+              </div>
+              <div class="semester-block">
+                <h4 class="semester-title"><i class="fas fa-book"></i> Semester II</h4>
+                <ul class="subject-list">
+                  <li class="subject-item"><span class="subject-name">Physics</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                </ul>
+              </div>
             </div>
-        </div>
-
-        <!-- BSc Year Filter -->
-        <div class="filter-group">
-            <label>Select Class:</label>
-            <div class="bsc-tabs">
-                <button class="bsc-btn active" data-bsc="1">First Year (FY)</button>
-                <button class="bsc-btn" data-bsc="2">Second Year (SY)</button>
-                <button class="bsc-btn" data-bsc="3">Third Year (TY)</button>
+          </div>
+          <!-- Year 2024 -->
+          <div class="year-block">
+            <h3 class="year-title">2024</h3>
+            <div class="semester-container">
+              <div class="semester-block">
+                <h4 class="semester-title"><i class="fas fa-book-open"></i> Semester I</h4>
+                <ul class="subject-list">
+                  <li class="subject-item"><span class="subject-name">Physics</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                  <li class="subject-item"><span class="subject-name">Computer Science</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                  <li class="subject-item"><span class="subject-name">AEC</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                  <li class="subject-item"><span class="subject-name">VSC</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                  <li class="subject-item"><span class="subject-name">IKS</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                </ul>
+              </div>
+              <div class="semester-block">
+                <h4 class="semester-title"><i class="fas fa-book"></i> Semester II</h4>
+                <ul class="subject-list">
+                  <li class="subject-item"><span class="subject-name">Physics</span><a href="#" class="download-link"><i class="fas fa-download"></i> PDF</a></li>
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
-
-        <!-- Papers Stats -->
-        <div id="papersStats" class="papers-stats">Showing <span id="paperCount">0</span> papers</div>
-
-        <!-- Papers Grid -->
-        <div id="papersContainer" class="papers-grid">
-            <div class="loading-spinner"><i class="fas fa-spinner"></i> Loading papers...</div>
-        </div>
+      </div>
     </section>
 
-    <!-- PHYSICS SECTION (unchanged) -->
-    <section id="physics" class="section">
-        <div class="section-header">
-            <h2>Physics Department</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">B.Sc. First Year Second Semester</p>
+    <!-- COURSES SECTION (BSc Years) -->
+    <section id="courses" class="section">
+      <div class="container">
+        <h2 class="section-title">Program Structure</h2>
+        <div class="courses-grid">
+          <!-- First Year -->
+          <div class="course-card">
+            <h3 class="course-title">BSc First Year</h3>
+            <div class="course-semester">
+              <h4><i class="fas fa-graduation-cap"></i> Semester I</h4>
+              <ul>
+                <li>Physics</li>
+                <li>Computer Science</li>
+                <li>AEC</li>
+                <li>VSC</li>
+                <li>IKS</li>
+              </ul>
+            </div>
+            <div class="course-semester">
+              <h4><i class="fas fa-graduation-cap"></i> Semester II</h4>
+              <ul>
+                <li>Physics</li>
+                <li>Computer Science</li>
+                <li>Mathematics</li>
+                <!-- placeholder -->
+              </ul>
+            </div>
+          </div>
+          <!-- Second Year -->
+          <div class="course-card">
+            <h3 class="course-title">BSc Second Year</h3>
+            <div class="course-semester">
+              <h4><i class="fas fa-graduation-cap"></i> Semester III</h4>
+              <ul>
+                <li>Physics</li>
+                <li>Electronics</li>
+                <li>Maths</li>
+              </ul>
+            </div>
+            <div class="course-semester">
+              <h4><i class="fas fa-graduation-cap"></i> Semester IV</h4>
+              <ul>
+                <li>Physics</li>
+                <li>Electronics</li>
+                <li>Maths</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Third Year -->
+          <div class="course-card">
+            <h3 class="course-title">BSc Third Year</h3>
+            <div class="course-semester">
+              <h4><i class="fas fa-graduation-cap"></i> Semester V</h4>
+              <ul>
+                <li>Physics</li>
+                <li>Advanced Electronics</li>
+                <li>Quantum Mechanics</li>
+              </ul>
+            </div>
+            <div class="course-semester">
+              <h4><i class="fas fa-graduation-cap"></i> Semester VI</h4>
+              <ul>
+                <li>Physics</li>
+                <li>Nuclear Physics</li>
+                <li>Solid State</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="unit-tabs">
-            <span class="unit-tab" data-unit="1">Unit 1</span>
-            <span class="unit-tab" data-unit="2">Unit 2</span>
-            <span class="unit-tab" data-unit="3">Unit 3</span>
-            <span class="unit-tab active" data-unit="4">Unit 4: Surface Tension</span>
-        </div>
-        <div id="unit1Content" class="unit-content"><p>Unit 1 content coming soon...</p></div>
-        <div id="unit2Content" class="unit-content"><p>Unit 2 content coming soon...</p></div>
-        <div id="unit3Content" class="unit-content"><p>Unit 3 content coming soon...</p></div>
-        <div id="unit4Content" class="unit-content active-unit">
-            <h3 style="margin-bottom: 1rem;">Unit 4: Surface Tension & Related Topics</h3>
-            <div class="videos-grid" id="videosGrid"></div>
-        </div>
+      </div>
     </section>
+  </main>
 
-</main>
-
-<!-- ================= FOOTER ================= -->
-<footer class="main-footer">
+  <footer class="main-footer">
     <div class="container footer-content">
-        <div class="footer-college-info">
-            <h3>Shri Dr. R. G. Rathod Arts and Science College</h3>
-            <p>Murtizapur | Student Platform</p>
-        </div>
-        <div class="footer-ownership">
-            <p><strong>Website created and maintained by ADITYA SHINDE</strong></p>
-            <p class="footer-note">Independent student platform. Not officially affiliated with the college.</p>
-        </div>
+      <div class="footer-info">
+        <p><strong>Shri Dr. R. G. Rathod Arts & Science College</strong></p>
+        <p class="footer-note">Murtizapur · Student Platform (Independent)</p>
+      </div>
+      <div class="footer-credit">
+        <p class="footer-note">Created & maintained by Aditya Shinde</p>
+        <p class="footer-note">© <span id="current-year"></span> Student Platform</p>
+      </div>
     </div>
-    <div class="footer-bottom">
-        <p>&copy; <span id="currentYear"></span> Student Platform</p>
-    </div>
-</footer>
+  </footer>
 
-<script src="./script.js"></script>
+  <script>
+    // dynamic year for footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
