@@ -45,49 +45,83 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // ===== PHYSICS VIDEOS DATA (Unit 4) =====
+    // ===== PHYSICS VIDEOS DATA (Unit 4) - AB YEH USE KARO =====
     const videos = [
-        { title: "Fundamentals of surface tension", url: "https://youtu.be/gBWfxWdOaCk" },
-        { title: "Surface tension", url: "https://youtu.be/I8xFVGdkkUU" },
-        { title: "Molecular theory of surface tension", url: "https://youtu.be/1nsOVNIiyLA" },
-        { title: "Surface film", url: "https://youtu.be/M8wsuln-6Og" },
-        { title: "Surface energy", url: "https://youtu.be/FLXURvhLxiY" },
-        { title: "Access pressure inside soap bubble and liquid drop in air", url: "https://youtu.be/95Jomq0lvBg" },
-        { title: "Angle of contact", url: "https://youtu.be/fLPGkw2rz1o" },
-        { title: "Rise of Liquid Capillary Tube", url: "https://youtu.be/HBjc80Zbi7o" },
-        { title: "Viscosity", url: "https://youtu.be/sY8hV46aIps" },
-        { title: "Reynolds Number 'R'", url: "https://youtu.be/RZ3rLK4bIQ4" },
-        { title: "Stokes' law", url: "https://youtu.be/2odVI4Vc5UE" },
-        { title: "Terminal Velocity", url: "https://youtu.be/yXqeagd9PTQ" },
-        { title: "Poiseuille's equation", url: "https://youtu.be/xwyssfQ6oVc" }
+        { 
+            title: "Fundamentals of surface tension", 
+            videoId: "gBWfxWdOaCk" 
+        },
+        { 
+            title: "Surface tension", 
+            videoId: "I8xFVGdkkUU"
+        },
+        { 
+            title: "Molecular theory of surface tension", 
+            videoId: "1nsOVNIiyLA"
+        },
+        { 
+            title: "Surface film", 
+            videoId: "M8wsuln-6Og"
+        },
+        { 
+            title: "Surface energy", 
+            videoId: "FLXURvhLxiY"
+        },
+        { 
+            title: "Access pressure inside soap bubble and liquid drop in air", 
+            videoId: "95Jomq0lvBg"
+        },
+        { 
+            title: "Angle of contact", 
+            videoId: "fLPGkw2rz1o"
+        },
+        { 
+            title: "Rise of Liquid Capillary Tube", 
+            videoId: "HBjc80Zbi7o"
+        },
+        { 
+            title: "Viscosity", 
+            videoId: "sY8hV46aIps"
+        },
+        { 
+            title: "Reynolds Number 'R'", 
+            videoId: "RZ3rLK4bIQ4"
+        },
+        { 
+            title: "Stokes' law", 
+            videoId: "2odVI4Vc5UE"
+        },
+        { 
+            title: "Terminal Velocity", 
+            videoId: "yXqeagd9PTQ"
+        },
+        { 
+            title: "Poiseuille's equation", 
+            videoId: "xwyssfQ6oVc"
+        }
     ];
 
-    // Helper to extract YouTube video ID
-    function getYouTubeId(url) {
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        const match = url.match(regExp);
-        return (match && match[2].length === 11) ? match[2] : null;
-    }
-
-    // Render video cards
+    // ===== RENDER VIDEO CARDS (EMBEDDED YOUTUBE) =====
     const videosGrid = document.getElementById("videosGrid");
     if (videosGrid) {
         videosGrid.innerHTML = "";
         videos.forEach(video => {
-            const videoId = getYouTubeId(video.url);
-            const thumbnail = videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : '';
-
             const card = document.createElement("div");
             card.className = "video-card";
             card.innerHTML = `
-                <div class="video-thumbnail">
-                    ${thumbnail ? `<img src="${thumbnail}" alt="${video.title}">` : '<i class="fas fa-video" style="font-size:3rem; color:#aaa;"></i>'}
+                <div class="video-container">
+                    <iframe 
+                        width="100%" 
+                        height="200" 
+                        src="https://www.youtube.com/embed/${video.videoId}" 
+                        title="${video.title}"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
                 <div class="video-info">
                     <div class="video-title">${video.title}</div>
-                    <a href="${video.url}" target="_blank" class="video-btn">
-                        <i class="fab fa-youtube"></i> Watch on YouTube
-                    </a>
                 </div>
             `;
             videosGrid.appendChild(card);
@@ -101,21 +135,17 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Nav links found:", navLinks.length);
     console.log("Sections found:", sections.length);
 
-    // Check if sections have correct IDs
     sections.forEach(section => {
         console.log("Section ID:", section.id);
     });
 
-    // Function to activate a section
     function activateSection(targetId) {
         console.log("Activating section:", targetId);
         
-        // Hide all sections
         sections.forEach(section => {
             section.classList.remove("active-section");
         });
         
-        // Show target section
         const activeSection = document.getElementById(targetId);
         if (activeSection) {
             activeSection.classList.add("active-section");
@@ -124,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("❌ Section with id '" + targetId + "' not found!");
         }
 
-        // Update active nav link
         navLinks.forEach(link => {
             link.classList.remove("active");
             if (link.getAttribute("href") === `#${targetId}`) {
@@ -133,29 +162,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Add click event to all nav links
     navLinks.forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             const href = link.getAttribute("href");
             if (href) {
-                const targetId = href.substring(1); // remove #
+                const targetId = href.substring(1);
                 console.log("🔹 Nav link clicked:", targetId);
                 activateSection(targetId);
-                // Update URL hash without jumping
                 history.pushState(null, null, `#${targetId}`);
             }
         });
     });
 
-    // On page load, check URL hash
     const hash = window.location.hash.substring(1);
     console.log("Initial hash:", hash);
     
     if (hash && ["home", "files", "physics"].includes(hash)) {
         activateSection(hash);
     } else {
-        activateSection("home"); // default
+        activateSection("home");
     }
 
     // ===== UNIT TABS (Physics) =====
@@ -169,26 +195,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Unit tabs found:", unitTabs.length);
 
-    // Check if unit contents exist
-    Object.keys(unitContents).forEach(key => {
-        if (unitContents[key]) {
-            console.log(`Unit ${key} content found`);
-        } else {
-            console.warn(`⚠️ Unit ${key} content element not found!`);
-        }
-    });
-
-    // Add click event to all unit tabs
     unitTabs.forEach(tab => {
         tab.addEventListener("click", () => {
             const unit = tab.getAttribute("data-unit");
             console.log("Unit tab clicked:", unit);
             
-            // Update active tab
             unitTabs.forEach(t => t.classList.remove("active"));
             tab.classList.add("active");
 
-            // Show corresponding content, hide others
             Object.keys(unitContents).forEach(key => {
                 if (unitContents[key]) {
                     unitContents[key].classList.remove("active-unit");
@@ -198,8 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (unitContents[unit]) {
                 unitContents[unit].classList.add("active-unit");
                 console.log("✅ Unit", unit, "activated");
-            } else {
-                console.warn("⚠️ Unit content for unit", unit, "not found");
             }
         });
     });
@@ -214,7 +226,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 header.classList.remove("shrink");
             }
         });
-    } else {
-        console.warn("Header not found");
     }
 });
