@@ -2,123 +2,51 @@
   "papers": [
     {
       "id": 1,
+      "title": "AEC Previous Year Paper 2024",
+      "subject": "AEC",
       "year": 2024,
-      "semester": "I",
-      "subject": "Physics",
-      "title": "Physics Previous Year Paper 2024 (Sem I)",
-      "file": "papers/physics_2024_sem1.pdf"
+      "semester": 1,
+      "file": "papers/AEC2024.pdf"
     },
     {
       "id": 2,
+      "title": "AEC Previous Year Paper 2024",
+      "subject": "AEC",
       "year": 2024,
-      "semester": "I",
-      "subject": "Computer Science",
-      "title": "Computer Science Previous Year Paper 2024 (Sem I)",
-      "file": "papers/computer_2024_sem1.pdf"
+      "semester": 1,
+      "file": "papers/AEC 2024.pdf"
     },
     {
       "id": 3,
+      "title": "VSC Previous Year Paper 2024",
+      "subject": "VSC",
       "year": 2024,
-      "semester": "I",
-      "subject": "AEC",
-      "title": "AEC Previous Year Paper 2024 (Sem I)",
-      "file": "papers/AEC_2024_sem1.pdf"
+      "semester": 1,
+      "file": "papers/VSC 2024.pdf"
     },
     {
       "id": 4,
+      "title": "Computer Science Previous Year Paper 2024",
+      "subject": "Computer",
       "year": 2024,
-      "semester": "I",
-      "subject": "VSC",
-      "title": "VSC Previous Year Paper 2024 (Sem I)",
-      "file": "papers/VSC_2024_sem1.pdf"
+      "semester": 1,
+      "file": "papers/computer 2024.pdf"
     },
     {
       "id": 5,
+      "title": "Physics Previous Year Paper 2024",
+      "subject": "Physics",
       "year": 2024,
-      "semester": "I",
-      "subject": "IKS",
-      "title": "IKS Previous Year Paper 2024 (Sem I)",
-      "file": "papers/IKS_2024_sem1.pdf"
+      "semester": 1,
+      "file": "papers/physics 2024.pdf"
     },
     {
       "id": 6,
+      "title": "IKS Previous Year Paper 2024",
+      "subject": "IKS",
       "year": 2024,
-      "semester": "II",
-      "subject": "Physics",
-      "title": "Physics Previous Year Paper 2024 (Sem II)",
-      "file": "papers/physics_2024_sem2.pdf"
-    },
-    {
-      "id": 7,
-      "year": 2024,
-      "semester": "II",
-      "subject": "Computer Science",
-      "title": "Computer Science Previous Year Paper 2024 (Sem II)",
-      "file": "papers/computer_2024_sem2.pdf"
-    },
-    {
-      "id": 8,
-      "year": 2025,
-      "semester": "I",
-      "subject": "Physics",
-      "title": "Physics Previous Year Paper 2025 (Sem I)",
-      "file": "papers/physics_2025_sem1.pdf"
-    },
-    {
-      "id": 9,
-      "year": 2025,
-      "semester": "I",
-      "subject": "Computer Science",
-      "title": "Computer Science Previous Year Paper 2025 (Sem I)",
-      "file": "papers/computer_2025_sem1.pdf"
-    },
-    {
-      "id": 10,
-      "year": 2025,
-      "semester": "I",
-      "subject": "AEC",
-      "title": "AEC Previous Year Paper 2025 (Sem I)",
-      "file": "papers/AEC_2025_sem1.pdf"
-    },
-    {
-      "id": 11,
-      "year": 2025,
-      "semester": "II",
-      "subject": "Physics",
-      "title": "Physics Previous Year Paper 2025 (Sem II)",
-      "file": "papers/physics_2025_sem2.pdf"
-    },
-    {
-      "id": 12,
-      "year": 2026,
-      "semester": "I",
-      "subject": "Physics",
-      "title": "Physics Previous Year Paper 2026 (Sem I)",
-      "file": "papers/physics_2026_sem1.pdf"
-    },
-    {
-      "id": 13,
-      "year": 2026,
-      "semester": "I",
-      "subject": "Computer Science",
-      "title": "Computer Science Previous Year Paper 2026 (Sem I)",
-      "file": "papers/computer_2026_sem1.pdf"
-    },
-    {
-      "id": 14,
-      "year": 2026,
-      "semester": "I",
-      "subject": "AEC",
-      "title": "AEC Previous Year Paper 2026 (Sem I)",
-      "file": "papers/AEC_2026_sem1.pdf"
-    },
-    {
-      "id": 15,
-      "year": 2026,
-      "semester": "II",
-      "subject": "Physics",
-      "title": "Physics Previous Year Paper 2026 (Sem II)",
-      "file": "papers/physics_2026_sem2.pdf"
+      "semester": 1,
+      "file": "papers/IKS.pdf"
     }
   ]
 }
