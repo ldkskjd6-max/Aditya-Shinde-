@@ -1,4 +1,4 @@
-console.log("JS is running");
+console.log("JS is running - Debug Mode");
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded");
@@ -43,8 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 noticesContainer.appendChild(card);
             });
         }
-    } else {
-        console.warn("noticesContainer not found");
     }
 
     // ===== PHYSICS VIDEOS DATA (Unit 4) =====
@@ -64,12 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
         { title: "Poiseuille's equation", url: "https://youtu.be/xwyssfQ6oVc" }
     ];
 
+    // Helper to extract YouTube video ID
     function getYouTubeId(url) {
         const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         const match = url.match(regExp);
         return (match && match[2].length === 11) ? match[2] : null;
     }
 
+    // Render video cards
     const videosGrid = document.getElementById("videosGrid");
     if (videosGrid) {
         videosGrid.innerHTML = "";
@@ -92,8 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
             videosGrid.appendChild(card);
         });
-    } else {
-        console.warn("videosGrid not found");
     }
 
     // ===== TAB SWITCHING (Main Navigation) =====
@@ -103,23 +101,30 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Nav links found:", navLinks.length);
     console.log("Sections found:", sections.length);
 
-    if (navLinks.length === 0) {
-        console.error("No navigation links found! Check your HTML.");
-    }
+    // Check if sections have correct IDs
+    sections.forEach(section => {
+        console.log("Section ID:", section.id);
+    });
 
+    // Function to activate a section
     function activateSection(targetId) {
         console.log("Activating section:", targetId);
+        
+        // Hide all sections
         sections.forEach(section => {
             section.classList.remove("active-section");
         });
+        
+        // Show target section
         const activeSection = document.getElementById(targetId);
         if (activeSection) {
             activeSection.classList.add("active-section");
-            console.log("Section activated:", targetId);
+            console.log("✅ Section activated:", targetId);
         } else {
-            console.error("Section with id '" + targetId + "' not found!");
+            console.error("❌ Section with id '" + targetId + "' not found!");
         }
 
+        // Update active nav link
         navLinks.forEach(link => {
             link.classList.remove("active");
             if (link.getAttribute("href") === `#${targetId}`) {
@@ -128,19 +133,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Add click event to all nav links
     navLinks.forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
-            const targetId = link.getAttribute("href").substring(1); // remove #
-            console.log("Nav link clicked, target:", targetId);
-            activateSection(targetId);
-            history.pushState(null, null, `#${targetId}`);
+            const href = link.getAttribute("href");
+            if (href) {
+                const targetId = href.substring(1); // remove #
+                console.log("🔹 Nav link clicked:", targetId);
+                activateSection(targetId);
+                // Update URL hash without jumping
+                history.pushState(null, null, `#${targetId}`);
+            }
         });
     });
 
-    // On page load, check hash
+    // On page load, check URL hash
     const hash = window.location.hash.substring(1);
     console.log("Initial hash:", hash);
+    
     if (hash && ["home", "files", "physics"].includes(hash)) {
         activateSection(hash);
     } else {
@@ -158,22 +169,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Unit tabs found:", unitTabs.length);
 
+    // Check if unit contents exist
+    Object.keys(unitContents).forEach(key => {
+        if (unitContents[key]) {
+            console.log(`Unit ${key} content found`);
+        } else {
+            console.warn(`⚠️ Unit ${key} content element not found!`);
+        }
+    });
+
+    // Add click event to all unit tabs
     unitTabs.forEach(tab => {
         tab.addEventListener("click", () => {
             const unit = tab.getAttribute("data-unit");
             console.log("Unit tab clicked:", unit);
+            
+            // Update active tab
             unitTabs.forEach(t => t.classList.remove("active"));
             tab.classList.add("active");
 
+            // Show corresponding content, hide others
             Object.keys(unitContents).forEach(key => {
                 if (unitContents[key]) {
                     unitContents[key].classList.remove("active-unit");
                 }
             });
+            
             if (unitContents[unit]) {
                 unitContents[unit].classList.add("active-unit");
+                console.log("✅ Unit", unit, "activated");
             } else {
-                console.warn("Unit content for unit", unit, "not found");
+                console.warn("⚠️ Unit content for unit", unit, "not found");
             }
         });
     });
