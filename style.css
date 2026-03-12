@@ -157,29 +157,99 @@ body {
     font-size: 0.95rem;
 }
 
-/* ===== CONTENT ===== */
-.welcome-message,
-.notice-card,
-.unit-content {
-    background: white;
-    padding: 2rem;
+/* ===== FEATURED NOTICE CARD ===== */
+.notice-card-featured {
+    background: linear-gradient(135deg, #fff, #f0f7ff);
+    border-left: 6px solid #3498db;
     border-radius: 16px;
-    margin-bottom: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.welcome-message {
-    font-size: 1.1rem;
+.notice-card-featured:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(52,152,219,0.15);
 }
 
+.notice-date {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.3rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.notice-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.notice-text {
+    color: #34495e;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+.notice-link {
+    background: #e8f4fd;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    display: inline-block;
+    margin: 0.5rem 0 1rem 0;
+    border-left: 4px solid #3498db;
+    word-break: break-all;
+}
+
+.notice-link a {
+    color: #2980b9;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.notice-link a:hover {
+    text-decoration: underline;
+}
+
+.late-fee {
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 0.2rem 1rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.notice-meta {
+    display: flex;
+    gap: 2rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #cbd5e0;
+}
+
+/* ===== NOTICES ===== */
 .notices-container {
     display: grid;
     gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .notice-card {
-    padding: 0;
+    background: white;
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.2s;
 }
 
@@ -192,7 +262,6 @@ body {
     background: #2c3e50;
     color: white;
     padding: 1.2rem;
-    border-radius: 12px 12px 0 0;
 }
 
 .notice-header h3 {
@@ -211,7 +280,7 @@ body {
     color: #555;
 }
 
-/* ===== PHYSICS SECTION ===== */
+/* ===== SECTION HEADER ===== */
 .section-header {
     text-align: center;
     margin-bottom: 2rem;
@@ -235,115 +304,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* Unit Tabs */
-.unit-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 0.8rem;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-}
-
-.unit-tab {
-    background: #ecf0f1;
-    padding: 0.7rem 1.8rem;
-    border-radius: 40px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
-    font-size: 0.95rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.unit-tab.active {
-    background: #3498db;
-    color: white;
-    box-shadow: 0 4px 10px rgba(52,152,219,0.3);
-}
-
-.unit-tab:hover {
-    background: #bdc3c7;
-    transform: translateY(-2px);
-}
-
-.unit-tab.active:hover {
-    background: #2980b9;
-}
-
-/* Unit Content */
-.unit-content {
-    display: none;
-    padding: 2rem;
-}
-
-.unit-content.active-unit {
-    display: block;
-    animation: slideIn 0.4s ease;
-}
-
-@keyframes slideIn {
-    from { opacity: 0; transform: translateX(10px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* ===== VIDEOS GRID - FIXED SCROLLING ===== */
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-    width: 100%;
-}
-
-.video-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.video-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-.video-container {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    position: relative;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.video-info {
-    padding: 1rem;
-    background: white;
-}
-
-.video-title {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #2c3e50;
-    line-height: 1.4;
-    margin: 0;
-}
-
-/* ===== IMPROVED PAPERS SECTION ===== */
-
-/* Search Bar */
+/* ===== SEARCH & FILTERS ===== */
 .search-container {
     position: relative;
     max-width: 500px;
@@ -376,196 +337,6 @@ body {
     box-shadow: 0 4px 15px rgba(52,152,219,0.2);
 }
 
-/* Papers Stats */
-.papers-stats {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 0.95rem;
-    color: #7f8c8d;
-    background: #f8f9fa;
-    padding: 0.5rem;
-    border-radius: 30px;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    width: auto;
-    padding: 0.5rem 1.5rem;
-}
-
-/* Papers Grid */
-.papers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.8rem;
-    margin-top: 2rem;
-}
-
-/* Paper Cards */
-.paper-card {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid rgba(0,0,0,0.03);
-    position: relative;
-}
-
-.paper-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 35px rgba(52,152,219,0.15);
-}
-
-.paper-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #3498db, #2ecc71);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.paper-card:hover::before {
-    opacity: 1;
-}
-
-.paper-header {
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: white;
-    padding: 1.3rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.paper-header h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    line-height: 1.4;
-    margin: 0;
-    padding-right: 60px;
-}
-
-.paper-meta {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.paper-subject-tag {
-    background: rgba(255,255,255,0.15);
-    padding: 0.2rem 0.8rem;
-    border-radius: 30px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-.paper-year-badge {
-    position: absolute;
-    top: 1.3rem;
-    right: 1.3rem;
-    background: #f1c40f;
-    color: #2c3e50;
-    padding: 0.3rem 0.8rem;
-    border-radius: 30px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.paper-body {
-    padding: 1.3rem;
-}
-
-.paper-details {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #7f8c8d;
-    font-size: 0.9rem;
-    margin-bottom: 1.2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px dashed #e0e0e0;
-}
-
-.paper-details i {
-    color: #3498db;
-    width: 18px;
-}
-
-.paper-actions {
-    display: flex;
-    gap: 0.8rem;
-}
-
-.paper-download {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background: #27ae60;
-    color: white;
-    padding: 0.7rem 1rem;
-    border-radius: 12px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
-}
-
-.paper-download:hover {
-    background: #219a52;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(39,174,96,0.3);
-}
-
-.paper-preview {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    background: #ecf0f1;
-    color: #2c3e50;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-
-.paper-preview:hover {
-    background: #bdc3c7;
-    transform: translateY(-2px);
-}
-
-/* Empty State */
-.empty-state {
-    text-align: center;
-    padding: 3rem;
-    background: white;
-    border-radius: 20px;
-    grid-column: 1 / -1;
-}
-
-.empty-state i {
-    font-size: 3rem;
-    color: #bdc3c7;
-    margin-bottom: 1rem;
-}
-
-.empty-state p {
-    color: #7f8c8d;
-    font-size: 1.1rem;
-}
-
-/* Filter Tabs */
 .filter-tabs {
     display: flex;
     justify-content: center;
@@ -602,7 +373,326 @@ body {
     background: #2980b9;
 }
 
-/* Loading Spinner */
+.papers-stats {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    background: #f8f9fa;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== YEAR & SEMESTER STRUCTURE ===== */
+.year-section {
+    margin-bottom: 3rem;
+}
+
+.year-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #3498db;
+    display: inline-block;
+}
+
+.semester-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.semester-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eef2f6;
+    transition: transform 0.2s;
+}
+
+.semester-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.semester-header {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 1rem 1.5rem;
+}
+
+.semester-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.semester-body {
+    padding: 1.5rem;
+}
+
+.subject-list {
+    list-style: none;
+}
+
+.subject-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px dashed #ecf0f1;
+}
+
+.subject-item:last-child {
+    border-bottom: none;
+}
+
+.subject-name {
+    font-weight: 500;
+    color: #2c3e50;
+    flex: 1;
+}
+
+.subject-year {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    background: #ecf0f1;
+    padding: 0.2rem 0.8rem;
+    border-radius: 30px;
+    margin: 0 1rem;
+}
+
+.subject-download {
+    color: #27ae60;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: transform 0.2s, color 0.2s;
+    width: 30px;
+    text-align: center;
+}
+
+.subject-download:hover {
+    transform: scale(1.1);
+    color: #219a52;
+}
+
+.coming-soon {
+    color: #95a5a6;
+    font-style: italic;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+/* ===== COURSE CARDS ===== */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.course-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #eef2f6;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(52,152,219,0.1);
+}
+
+.course-header {
+    background: linear-gradient(135deg, #1d2671, #c33764);
+    color: white;
+    padding: 1.5rem;
+}
+
+.course-header h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.course-body {
+    padding: 1.5rem;
+}
+
+.course-semester {
+    margin-bottom: 1.2rem;
+}
+
+.course-semester h4 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.course-subjects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.subject-badge {
+    background: #ecf0f1;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* ===== PHYSICS VIDEOS ===== */
+.unit-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.unit-tab {
+    background: #ecf0f1;
+    padding: 0.7rem 1.8rem;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.unit-tab.active {
+    background: #3498db;
+    color: white;
+    box-shadow: 0 4px 10px rgba(52,152,219,0.3);
+}
+
+.unit-tab:hover {
+    background: #bdc3c7;
+    transform: translateY(-2px);
+}
+
+.unit-tab.active:hover {
+    background: #2980b9;
+}
+
+.unit-content {
+    display: none;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.unit-content.active-unit {
+    display: block;
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.video-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eef2f6;
+}
+
+.video-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    position: relative;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-info {
+    padding: 1rem;
+    background: white;
+}
+
+.video-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2c3e50;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ===== PAPERS GRID (backup) ===== */
+.papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* ===== OWNERSHIP NOTE ===== */
+.ownership-note {
+    background: #f0f7ff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    border-left: 4px solid #3498db;
+}
+
+.ownership-note i {
+    color: #3498db;
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* ===== LOADING SPINNER ===== */
 .loading-spinner {
     text-align: center;
     padding: 2rem;
@@ -620,19 +710,24 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* ===== OWNERSHIP NOTE ===== */
-.ownership-note {
-    background: #f0f7ff;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    margin-top: 1.5rem;
-    border-left: 4px solid #3498db;
+/* ===== EMPTY STATE ===== */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 20px;
+    grid-column: 1 / -1;
 }
 
-.ownership-note i {
-    color: #3498db;
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
+.empty-state i {
+    font-size: 3rem;
+    color: #bdc3c7;
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
 }
 
 /* ===== FOOTER ===== */
@@ -714,14 +809,31 @@ body {
         font-size: 1rem;
     }
     
+    .notice-title {
+        font-size: 1.2rem;
+    }
+    
+    .notice-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .year-title {
+        font-size: 1.5rem;
+    }
+    
+    .semester-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
     .videos-grid {
         grid-template-columns: 1fr;
         gap: 1.2rem;
     }
     
-    .papers-grid {
+    .course-grid {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
     }
     
     .unit-tabs {
@@ -746,16 +858,21 @@ body {
         font-size: 1.5rem;
     }
     
-    .notice-header h3 {
-        font-size: 1.1rem;
-    }
-    
     .college-name {
         font-size: 1.3rem;
     }
     
     .search-container {
         max-width: 100%;
+    }
+    
+    .subject-item {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .subject-year {
+        margin: 0 0.5rem;
     }
 }
 
