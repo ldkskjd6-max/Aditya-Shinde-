@@ -21,45 +21,25 @@
 <!-- ================= HEADER ================= -->
 <header class="main-header">
     <div class="container header-content">
-
         <div class="college-brand">
-            <h1 class="college-name">
-                Shri Dr. R. G. Rathod Arts and Science College
-            </h1>
+            <h1 class="college-name">Shri Dr. R. G. Rathod Arts and Science College</h1>
             <p class="college-location">Murtizapur</p>
-
-            <p class="owner-badge">
-                Managed by <span>ADITYA SHINDE</span>
-            </p>
+            <p class="owner-badge">Managed by <span>ADITYA SHINDE</span></p>
         </div>
-
         <nav class="main-nav">
             <ul class="nav-list">
-                <li>
-                    <a href="#home" class="nav-link active">
-                        <i class="fas fa-home"></i> Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#files" class="nav-link">
-                        <i class="fas fa-folder"></i> Files
-                    </a>
-                </li>
-                <li>
-                    <a href="#physics" class="nav-link">
-                        <i class="fas fa-flask"></i> Physics
-                    </a>
-                </li>
+                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#files" class="nav-link"><i class="fas fa-folder"></i> Files</a></li>
+                <li><a href="#physics" class="nav-link"><i class="fas fa-flask"></i> Physics</a></li>
             </ul>
         </nav>
-
     </div>
 </header>
 
 <!-- ================= MAIN ================= -->
 <main class="container main-content">
 
-    <!-- HOME SECTION -->
+    <!-- HOME SECTION (with new notice) -->
     <section id="home" class="section active-section">
         <div class="hero-box">
             <h1>Student Information Portal</h1>
@@ -67,96 +47,102 @@
             <span>Updates • Notices • Academic Resources</span>
         </div>
 
-        <div class="welcome-message">
-            <p>
-                This platform provides transparent access to official college notices
-                and academic resources for students.
-            </p>
-            <div class="ownership-note">
-                <p>
-                    <i class="fas fa-user-circle"></i>
-                    <strong>Platform Profile:</strong>
-                    Independently created & maintained by <strong>Aditya Shinde</strong>
+        <!-- Important Notice Card -->
+        <div class="notice-card important-notice">
+            <div class="notice-header">
+                <i class="fas fa-exclamation-circle"></i>
+                <h2>📢 Important Examination Notice</h2>
+            </div>
+            <div class="notice-body">
+                <p>All regular <strong>Semester-II students</strong> and <strong>backlog Semester-I students</strong> are informed to fill the <strong>Summer 2026 Examination Form</strong> online at:</p>
+                <p class="notice-link">
+                    <a href="https://sgbau.ucanapply.com" target="_blank">https://sgbau.ucanapply.com</a>
                 </p>
+                <div class="notice-details">
+                    <p><i class="fas fa-check-circle"></i> After filling the form, take the printout and submit it to the college office with the required examination fee within the scheduled time.</p>
+                    <p><i class="fas fa-check-circle"></i> Students must submit the form printout; otherwise the examination seat number will not be issued.</p>
+                    <p><i class="fas fa-check-circle"></i> Some courses may require a late fee of <strong>Rs. 400</strong> while submitting the form.</p>
+                </div>
+                <p class="notice-date"><i class="far fa-calendar-alt"></i> Date: 08 March 2026</p>
             </div>
         </div>
 
+        <!-- Other notices (existing) -->
         <div class="section-header" style="margin-top:3rem;">
             <h2>Latest Updates & Notices</h2>
             <div class="section-divider"></div>
             <p class="section-subtitle">Official announcements</p>
         </div>
-
         <div id="noticesContainer" class="notices-container"></div>
+
+        <!-- Ownership note (optional) -->
+        <div class="ownership-note">
+            <p><i class="fas fa-user-circle"></i> <strong>Platform Profile:</strong> Independently created & maintained by <strong>Aditya Shinde</strong></p>
+        </div>
     </section>
 
-    <!-- FILES SECTION (Previous Year Papers only - Google Drive removed) -->
+    <!-- FILES SECTION (restructured with Year, Semester, BSc Year) -->
     <section id="files" class="section">
         <div class="section-header">
-            <h2>📚 Previous Year Papers</h2>
+            <h2>📚 Previous Year Question Papers</h2>
             <div class="section-divider"></div>
-            <p class="section-subtitle">Download previous year question papers</p>
+            <p class="section-subtitle">Select Year, Semester & Class to download papers</p>
         </div>
 
-        <!-- Search Bar -->
-        <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="searchPapers" class="search-input" placeholder="Search papers by title, subject or year...">
+        <!-- Year Filter -->
+        <div class="filter-group">
+            <label>Select Year:</label>
+            <div class="year-tabs">
+                <button class="year-btn active" data-year="2024">2024</button>
+                <button class="year-btn" data-year="2025">2025</button>
+                <button class="year-btn" data-year="2026">2026</button>
+            </div>
         </div>
 
-        <!-- Filter Buttons (including IKS) -->
-        <div class="filter-tabs">
-            <button class="filter-btn active" data-filter="all">All Papers</button>
-            <button class="filter-btn" data-filter="Physics">Physics</button>
-            <button class="filter-btn" data-filter="Computer">Computer</button>
-            <button class="filter-btn" data-filter="AEC">AEC</button>
-            <button class="filter-btn" data-filter="VSC">VSC</button>
-            <button class="filter-btn" data-filter="IKS">IKS</button>
+        <!-- Semester Filter -->
+        <div class="filter-group">
+            <label>Select Semester:</label>
+            <div class="semester-tabs">
+                <button class="semester-btn active" data-semester="1">Semester 1</button>
+                <button class="semester-btn" data-semester="2">Semester 2</button>
+            </div>
+        </div>
+
+        <!-- BSc Year Filter -->
+        <div class="filter-group">
+            <label>Select Class:</label>
+            <div class="bsc-tabs">
+                <button class="bsc-btn active" data-bsc="1">First Year (FY)</button>
+                <button class="bsc-btn" data-bsc="2">Second Year (SY)</button>
+                <button class="bsc-btn" data-bsc="3">Third Year (TY)</button>
+            </div>
         </div>
 
         <!-- Papers Stats -->
-        <div id="papersStats" class="papers-stats"></div>
+        <div id="papersStats" class="papers-stats">Showing <span id="paperCount">0</span> papers</div>
 
         <!-- Papers Grid -->
         <div id="papersContainer" class="papers-grid">
-            <div class="loading-spinner">
-                <i class="fas fa-spinner"></i> Loading papers...
-            </div>
+            <div class="loading-spinner"><i class="fas fa-spinner"></i> Loading papers...</div>
         </div>
     </section>
 
-    <!-- PHYSICS SECTION -->
+    <!-- PHYSICS SECTION (unchanged) -->
     <section id="physics" class="section">
         <div class="section-header">
             <h2>Physics Department</h2>
             <div class="section-divider"></div>
             <p class="section-subtitle">B.Sc. First Year Second Semester</p>
         </div>
-
-        <!-- Unit tabs -->
         <div class="unit-tabs">
             <span class="unit-tab" data-unit="1">Unit 1</span>
             <span class="unit-tab" data-unit="2">Unit 2</span>
             <span class="unit-tab" data-unit="3">Unit 3</span>
             <span class="unit-tab active" data-unit="4">Unit 4: Surface Tension</span>
         </div>
-
-        <!-- Unit 1 Content -->
-        <div id="unit1Content" class="unit-content">
-            <p>Unit 1 content coming soon...</p>
-        </div>
-
-        <!-- Unit 2 Content -->
-        <div id="unit2Content" class="unit-content">
-            <p>Unit 2 content coming soon...</p>
-        </div>
-
-        <!-- Unit 3 Content -->
-        <div id="unit3Content" class="unit-content">
-            <p>Unit 3 content coming soon...</p>
-        </div>
-
-        <!-- Unit 4 Content (Active) -->
+        <div id="unit1Content" class="unit-content"><p>Unit 1 content coming soon...</p></div>
+        <div id="unit2Content" class="unit-content"><p>Unit 2 content coming soon...</p></div>
+        <div id="unit3Content" class="unit-content"><p>Unit 3 content coming soon...</p></div>
         <div id="unit4Content" class="unit-content active-unit">
             <h3 style="margin-bottom: 1rem;">Unit 4: Surface Tension & Related Topics</h3>
             <div class="videos-grid" id="videosGrid"></div>
@@ -172,15 +158,11 @@
             <h3>Shri Dr. R. G. Rathod Arts and Science College</h3>
             <p>Murtizapur | Student Platform</p>
         </div>
-
         <div class="footer-ownership">
             <p><strong>Website created and maintained by ADITYA SHINDE</strong></p>
-            <p class="footer-note">
-                Independent student platform. Not officially affiliated with the college.
-            </p>
+            <p class="footer-note">Independent student platform. Not officially affiliated with the college.</p>
         </div>
     </div>
-
     <div class="footer-bottom">
         <p>&copy; <span id="currentYear"></span> Student Platform</p>
     </div>
