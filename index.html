@@ -6,287 +6,7 @@
     <title>Shri Dr. R. G. Rathod Arts & Science College | Student Platform</title>
 
     <!-- MAIN CSS -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f4f6f8;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 20px;
-        }
-
-        /* ===== HEADER ===== */
-        .main-header {
-            background: #2c3e50;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.35s ease;
-        }
-
-        .header-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .college-name {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.8rem;
-            transition: 0.35s;
-        }
-
-        .college-location {
-            opacity: 0.85;
-        }
-
-        .owner-badge {
-            font-size: 0.85rem;
-            margin-top: 0.4rem;
-        }
-
-        .owner-badge span {
-            color: #f1c40f;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        /* NAV */
-        .nav-list {
-            list-style: none;
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.8rem;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            padding: 0.4rem 1rem;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .nav-link.active,
-        .nav-link:hover {
-            background: #3498db;
-        }
-
-        /* ===== SHRINK ON SCROLL ===== */
-        .main-header.shrink {
-            padding: 0.2rem 0;
-        }
-
-        .main-header.shrink .college-location,
-        .main-header.shrink .owner-badge {
-            display: none;
-        }
-
-        .main-header.shrink .college-name {
-            font-size: 1.2rem;
-        }
-
-        /* ===== SECTIONS ===== */
-        .section {
-            display: none;
-            padding: 2rem 0;
-        }
-
-        .section.active-section {
-            display: block;
-        }
-
-        /* ===== HERO ===== */
-        .hero-box {
-            background: linear-gradient(135deg, #1d2671, #c33764);
-            color: white;
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        /* ===== CONTENT ===== */
-        .welcome-message,
-        .notice-card,
-        .drive-embed,
-        .unit-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .notices-container {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .notice-header {
-            background: #2c3e50;
-            color: white;
-            padding: 1rem;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .notice-body {
-            padding: 1rem;
-        }
-
-        /* ===== PHYSICS SECTION ===== */
-        .section-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .section-divider {
-            width: 80px;
-            height: 4px;
-            background: #3498db;
-            margin: 0.5rem auto;
-        }
-        .section-subtitle {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-        }
-
-        .unit-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        .unit-tab {
-            background: #ecf0f1;
-            padding: 0.6rem 1.5rem;
-            border-radius: 40px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .unit-tab.active {
-            background: #3498db;
-            color: white;
-        }
-        .unit-tab:hover {
-            background: #bdc3c7;
-        }
-
-        .unit-content {
-            display: none;
-        }
-        .unit-content.active-unit {
-            display: block;
-        }
-
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .video-card {
-            background: #f9f9f9;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .video-thumbnail {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .video-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .video-info {
-            padding: 1rem;
-        }
-        .video-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-        .video-description {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 1rem;
-        }
-        .video-btn {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
-        .video-btn:hover {
-            background: #2980b9;
-        }
-
-        /* ===== FOOTER ===== */
-        .main-footer {
-            background: #2c3e50;
-            color: white;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 0;
-            gap: 1rem;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(0,0,0,0.2);
-        }
-
-        @media (min-width: 768px) {
-            .header-content {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-            .nav-list {
-                margin-top: 0;
-            }
-            .footer-content {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -326,7 +46,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#physics" class="nav-link">
+                    <a href="#physics" class="nav-link">   <!-- href="#physics" hona chahiye -->
                         <i class="fas fa-flask"></i> Physics
                     </a>
                 </li>
@@ -339,23 +59,19 @@
 <!-- ================= MAIN ================= -->
 <main class="container main-content">
 
-    <!-- HOME -->
+    <!-- HOME SECTION -->
     <section id="home" class="section active-section">
-
-        <!-- HERO -->
         <div class="hero-box">
             <h1>Student Information Portal</h1>
             <p>Shri Dr. R. G. Rathod Arts & Science College, Murtizapur</p>
             <span>Updates • Notices • Academic Resources</span>
         </div>
 
-        <!-- INTRO -->
         <div class="welcome-message">
             <p>
                 This platform provides transparent access to official college notices
                 and academic resources for students.
             </p>
-
             <div class="ownership-note">
                 <p>
                     <i class="fas fa-user-circle"></i>
@@ -365,7 +81,6 @@
             </div>
         </div>
 
-        <!-- UPDATES -->
         <div class="section-header" style="margin-top:3rem;">
             <h2>Latest Updates & Notices</h2>
             <div class="section-divider"></div>
@@ -375,7 +90,7 @@
         <div id="noticesContainer" class="notices-container"></div>
     </section>
 
-    <!-- FILES -->
+    <!-- FILES SECTION -->
     <section id="files" class="section">
         <div class="section-header">
             <h2>Academic Files & Resources</h2>
@@ -396,32 +111,42 @@
         </div>
     </section>
 
-    <!-- PHYSICS -->
-    <section id="physics" class="section">
+    <!-- PHYSICS SECTION - YEH IMPORTANT HAI -->
+    <section id="physics" class="section">   <!-- ID "physics" hona chahiye -->
         <div class="section-header">
             <h2>Physics Department</h2>
             <div class="section-divider"></div>
             <p class="section-subtitle">B.Sc. First Year Second Semester</p>
         </div>
 
-        <!-- Unit tabs (only unit 4 active now) -->
+        <!-- Unit tabs -->
         <div class="unit-tabs">
             <span class="unit-tab" data-unit="1">Unit 1</span>
             <span class="unit-tab" data-unit="2">Unit 2</span>
             <span class="unit-tab" data-unit="3">Unit 3</span>
-            <span class="unit-tab active" data-unit="4">Unit 4: Surface Tension</span>
+            <span class="unit-tab active" data-unit="4">Unit 4: Surface Tension</span>   <!-- data-unit="4" hona chahiye -->
         </div>
 
-        <!-- Unit 4 Content (active) -->
-        <div id="unit4Content" class="unit-content active-unit">
+        <!-- Unit 1 Content -->
+        <div id="unit1Content" class="unit-content">
+            <p>Unit 1 content coming soon...</p>
+        </div>
+
+        <!-- Unit 2 Content -->
+        <div id="unit2Content" class="unit-content">
+            <p>Unit 2 content coming soon...</p>
+        </div>
+
+        <!-- Unit 3 Content -->
+        <div id="unit3Content" class="unit-content">
+            <p>Unit 3 content coming soon...</p>
+        </div>
+
+        <!-- Unit 4 Content (Active) -->
+        <div id="unit4Content" class="unit-content active-unit">   <!-- ID "unit4Content" hona chahiye -->
             <h3 style="margin-bottom: 1rem;">Unit 4: Surface Tension & Related Topics</h3>
-            <div class="videos-grid" id="videosGrid"></div>
+            <div class="videos-grid" id="videosGrid"></div>   <!-- ID "videosGrid" hona chahiye -->
         </div>
-
-        <!-- Other units (hidden) can be added later -->
-        <div id="unit1Content" class="unit-content">Unit 1 content coming soon...</div>
-        <div id="unit2Content" class="unit-content">Unit 2 content coming soon...</div>
-        <div id="unit3Content" class="unit-content">Unit 3 content coming soon...</div>
     </section>
 
 </main>
@@ -447,165 +172,6 @@
     </div>
 </footer>
 
-<script>
-    console.log("JS is running");
-
-    document.addEventListener("DOMContentLoaded", () => {
-
-        // ===== CURRENT YEAR =====
-        const yearEl = document.getElementById("currentYear");
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-        // ===== NOTICES DATA =====
-        const notices = [
-            {
-                date: "2026-01-15",
-                title: "Welcome Friends",
-                description: "Welcome to Shri Dr. R. G. Rathod Arts and Science College. Friends, I’ve built a Student Information Portal for our college to share updates and study resources. It’s student-managed and made for learning. Do check it out and tell me how it feels — Aditya Shinde"
-            },
-            {
-                date: "2026-01-12",
-                title: "Department of Physics",
-                description: "All the students are hereby informed that As per the University Academic calendar, your semester session started from 26 December 2025, it is mandatory to attend the classes of Theory and Practical for Internal Assessment and Examination Procedure, attend the classes regularly."
-            }
-        ];
-
-        // ===== RENDER NOTICES =====
-        const noticesContainer = document.getElementById("noticesContainer");
-        if (noticesContainer) {
-            noticesContainer.innerHTML = "";
-            if (notices.length === 0) {
-                noticesContainer.innerHTML = "<p>No notices available.</p>";
-            } else {
-                notices.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach(n => {
-                    const card = document.createElement("div");
-                    card.className = "notice-card";
-                    card.innerHTML = `
-                        <div class="notice-header">
-                            <h3>${n.title}</h3>
-                            <small>${new Date(n.date).toDateString()}</small>
-                        </div>
-                        <div class="notice-body">
-                            <p>${n.description}</p>
-                        </div>
-                    `;
-                    noticesContainer.appendChild(card);
-                });
-            }
-        }
-
-        // ===== PHYSICS VIDEOS DATA (Unit 4) =====
-        const videos = [
-            { title: "Fundamentals of surface tension", url: "https://youtu.be/gBWfxWdOaCk" },
-            { title: "Surface tension", url: "https://youtu.be/I8xFVGdkkUU" },
-            { title: "Molecular theory of surface tension", url: "https://youtu.be/1nsOVNIiyLA" },
-            { title: "Surface film", url: "https://youtu.be/M8wsuln-6Og" },
-            { title: "Surface energy", url: "https://youtu.be/FLXURvhLxiY" },
-            { title: "Access pressure inside soap bubble and liquid drop in air", url: "https://youtu.be/95Jomq0lvBg" },
-            { title: "Angle of contact", url: "https://youtu.be/fLPGkw2rz1o" },
-            { title: "Rise of Liquid Capillary Tube", url: "https://youtu.be/HBjc80Zbi7o" },
-            { title: "Viscosity", url: "https://youtu.be/sY8hV46aIps" },
-            { title: "Reynolds Number 'R'", url: "https://youtu.be/RZ3rLK4bIQ4" },
-            { title: "Stokes' law", url: "https://youtu.be/2odVI4Vc5UE" },
-            { title: "Terminal Velocity", url: "https://youtu.be/yXqeagd9PTQ" },
-            { title: "Poiseuille's equation", url: "https://youtu.be/xwyssfQ6oVc" }
-        ];
-
-        // Helper to extract YouTube video ID from various URL formats
-        function getYouTubeId(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
-        }
-
-        // Render video cards
-        const videosGrid = document.getElementById("videosGrid");
-        if (videosGrid) {
-            videosGrid.innerHTML = "";
-            videos.forEach(video => {
-                const videoId = getYouTubeId(video.url);
-                const thumbnail = videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : '';
-
-                const card = document.createElement("div");
-                card.className = "video-card";
-                card.innerHTML = `
-                    <div class="video-thumbnail">
-                        ${thumbnail ? `<img src="${thumbnail}" alt="${video.title}">` : '<i class="fas fa-video" style="font-size:3rem; color:#aaa;"></i>'}
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">${video.title}</div>
-                        <a href="${video.url}" target="_blank" class="video-btn">
-                            <i class="fab fa-youtube"></i> Watch on YouTube
-                        </a>
-                    </div>
-                `;
-                videosGrid.appendChild(card);
-            });
-        }
-
-        // ===== TAB SWITCHING (Main Navigation) =====
-        const navLinks = document.querySelectorAll(".nav-link");
-        const sections = document.querySelectorAll(".section");
-
-        function activateSection(targetId) {
-            sections.forEach(section => {
-                section.classList.remove("active-section");
-            });
-            const activeSection = document.getElementById(targetId);
-            if (activeSection) activeSection.classList.add("active-section");
-
-            navLinks.forEach(link => {
-                link.classList.remove("active");
-                if (link.getAttribute("href") === `#${targetId}`) {
-                    link.classList.add("active");
-                }
-            });
-        }
-
-        navLinks.forEach(link => {
-            link.addEventListener("click", (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute("href").substring(1); // remove #
-                activateSection(targetId);
-                // Update URL hash without jumping (optional)
-                history.pushState(null, null, `#${targetId}`);
-            });
-        });
-
-        // On page load, check hash and activate corresponding section
-        const hash = window.location.hash.substring(1);
-        if (hash && ["home", "files", "physics"].includes(hash)) {
-            activateSection(hash);
-        } else {
-            activateSection("home"); // default
-        }
-
-        // ===== UNIT TABS (Physics) =====
-        const unitTabs = document.querySelectorAll(".unit-tab");
-        const unitContents = {
-            1: document.getElementById("unit1Content"),
-            2: document.getElementById("unit2Content"),
-            3: document.getElementById("unit3Content"),
-            4: document.getElementById("unit4Content")
-        };
-
-        unitTabs.forEach(tab => {
-            tab.addEventListener("click", () => {
-                const unit = tab.getAttribute("data-unit");
-                // Update active class on tabs
-                unitTabs.forEach(t => t.classList.remove("active"));
-                tab.classList.add("active");
-
-                // Show corresponding content, hide others
-                Object.keys(unitContents).forEach(key => {
-                    if (unitContents[key]) {
-                        unitContents[key].classList.remove("active-unit");
-                    }
-                });
-                if (unitContents[unit]) {
-                    unitContents[unit].classList.add("active-unit");
-                }
-            });
-        });
-
-        // ===== HEADER SCROLL 
+<script src="./script.js"></script>
+</body>
+</html>
