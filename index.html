@@ -90,46 +90,38 @@
         <div id="noticesContainer" class="notices-container"></div>
     </section>
 
-    <!-- FILES SECTION -->
+    <!-- FILES SECTION (Previous Year Papers only - Google Drive removed) -->
     <section id="files" class="section">
         <div class="section-header">
-            <h2>Academic Files & Resources</h2>
-            <div class="section-divider"></div>
-        </div>
-
-        <!-- Google Drive -->
-        <div class="drive-info">
-            <p><i class="fas fa-info-circle"></i> Files are hosted on Google Drive</p>
-        </div>
-
-        <div class="drive-embed">
-            <iframe
-                src="https://drive.google.com/embeddedfolderview?id=12bg4aVC9eK7j_CMal8UGBGoebEP2G5Dz#list"
-                width="100%"
-                height="500"
-                frameborder="0">
-            </iframe>
-        </div>
-
-        <!-- YEAR PAPERS SECTION -->
-        <div class="section-header" style="margin-top: 3rem;">
             <h2>📚 Previous Year Papers</h2>
             <div class="section-divider"></div>
             <p class="section-subtitle">Download previous year question papers</p>
         </div>
 
-        <!-- Filter Buttons -->
+        <!-- Search Bar -->
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchPapers" class="search-input" placeholder="Search papers by title, subject or year...">
+        </div>
+
+        <!-- Filter Buttons (including IKS) -->
         <div class="filter-tabs">
             <button class="filter-btn active" data-filter="all">All Papers</button>
             <button class="filter-btn" data-filter="Physics">Physics</button>
             <button class="filter-btn" data-filter="Computer">Computer</button>
             <button class="filter-btn" data-filter="AEC">AEC</button>
             <button class="filter-btn" data-filter="VSC">VSC</button>
+            <button class="filter-btn" data-filter="IKS">IKS</button>
         </div>
+
+        <!-- Papers Stats -->
+        <div id="papersStats" class="papers-stats"></div>
 
         <!-- Papers Grid -->
         <div id="papersContainer" class="papers-grid">
-            <p style="text-align: center;">Loading papers...</p>
+            <div class="loading-spinner">
+                <i class="fas fa-spinner"></i> Loading papers...
+            </div>
         </div>
     </section>
 
