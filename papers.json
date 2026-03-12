@@ -1,0 +1,44 @@
+{
+  "papers": [
+    {
+      "id": 1,
+      "title": "AEC Previous Year Paper 2024",
+      "subject": "AEC",
+      "year": 2024,
+      "semester": 2,
+      "file": "papers/AEC2024.pdf"
+    },
+    {
+      "id": 2,
+      "title": "AEC Previous Year Paper 2024 (with space)",
+      "subject": "AEC",
+      "year": 2024,
+      "semester": 2,
+      "file": "papers/AEC 2024.pdf"
+    },
+    {
+      "id": 3,
+      "title": "VSC Previous Year Paper 2024",
+      "subject": "VSC",
+      "year": 2024,
+      "semester": 2,
+      "file": "papers/VSC 2024.pdf"
+    },
+    {
+      "id": 4,
+      "title": "Computer Science Previous Year Paper 2024",
+      "subject": "Computer",
+      "year": 2024,
+      "semester": 2,
+      "file": "papers/computer 2024.pdf"
+    },
+    {
+      "id": 5,
+      "title": "Physics Previous Year Paper 2024",
+      "subject": "Physics",
+      "year": 2024,
+      "semester": 2,
+      "file": "papers/physics 2024.pdf"
+    }
+  ]
+}
