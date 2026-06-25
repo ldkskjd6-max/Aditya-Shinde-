@@ -14,8 +14,8 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 # Fetching the fresh Gemini API Key
 API_KEY = os.getenv("GEMINI_API_KEY")
 
-# Stable Direct REST API URL for Gemini 1.5 Flash
-GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
+# Switched to the latest valid model (gemini-2.0-flash) which will use the fresh quota
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={API_KEY}"
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -49,7 +49,7 @@ def ask():
 
 @app.route('/', methods=['GET'])
 def health_check():
-    return "AI Backend is running smoothly on fresh Gemini API!", 200
+    return "AI Backend is running smoothly on Gemini 2.0 Flash!", 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
