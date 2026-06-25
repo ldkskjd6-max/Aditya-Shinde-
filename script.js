@@ -3,6 +3,9 @@ console.log("JS is running - Final Version with AI Doubt");
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded");
 
+    // ===== NEW: API URL for Railway backend =====
+    const API_URL = 'https://aditya-shinde-production.up.railway.app/ask';
+
     // ===== CURRENT YEAR =====
     const yearEl = document.getElementById("currentYear");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -372,7 +375,8 @@ document.addEventListener("DOMContentLoaded", () => {
         showProcessing();
 
         try {
-            const response = await fetch('https://Aditya7.pythonanywhere.com/api/ask', {
+            // ===== UPDATED: using API_URL constant =====
+            const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
