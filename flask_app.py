@@ -4,20 +4,23 @@ from flask_cors import CORS
 import google.generativeai as genai
 from dotenv import load_dotenv
 
-# Load environment variables (useful for local testing)
+# Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
 
-# CORS configuration to allow requests from your GitHub Pages
+# CORS configuration to allow requests from any origin
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # API Key setup
 api_key = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=api_key)
+if api_key:
+    genai.configure(api_key=api_key)
+else:
+    print("WARNING: GEMINI_API_KEY is missing!")
 
-# Initialize the model (Updated to gemini-1.5-flash for better stability)
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Sahi model loading method with explicit name
+model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
 @app.route('/ask', methods=['POST'])
 def ask():
