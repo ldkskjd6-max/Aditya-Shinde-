@@ -1,26 +1,16 @@
 import os
+import requests
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import google.generativeai as genai
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
-
 app = Flask(__name__)
-
-# CORS configuration to allow requests from any origin
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# API Key setup
-api_key = os.getenv("GEMINI_API_KEY")
-if api_key:
-    genai.configure(api_key=api_key)
-else:
-    print("WARNING: GEMINI_API_KEY is missing!")
-
-# Sahi model loading method with explicit name
-model = genai.GenerativeModel(model_name="gemini-1.5-flash")
+API_KEY = os.getenv("GEMINI_API_KEY")
+# Direct Google API Endpoint
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -31,19 +21,30 @@ def ask():
         if not user_doubt:
             return jsonify({'error': 'No question provided'}), 400
         
-        # Generate content using Gemini
-        response = model.generate_content(user_doubt)
+        # Direct JSON payload for Google API
+        payload = {
+            "contents": [{"parts": [{"text": user_doubt}]}]
+        }
         
-        return jsonify({'answer': response.text})
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(GEMINI_URL, json=payload, headers=headers)
+        response_data = response.json()
+        
+        # Checking if Google sent a success response
+        if response.status_code == 200:
+            answer = response_data['candidates'][0]['content']['parts'][0]['text']
+            return jsonify({'answer': answer})
+        else:
+            return jsonify({'error': str(response_data.get('error', 'API Error'))}), response.status_code
+            
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 @app.route('/', methods=['GET'])
 def health_check():
-    return "AI Backend is running successfully!", 200
+    return "AI Backend is running on Direct REST API!", 200
 
 if __name__ == '__main__':
-    # Use Railway's port or default to 5000
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
     
