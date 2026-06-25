@@ -8,12 +8,14 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 
-# CORS setup
+# CORS setup for frontend communication
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# Fetching OpenRouter API Key
-API_KEY = os.getenv("OPENROUTER_API_KEY")
-OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+# Fetching the fresh Gemini API Key
+API_KEY = os.getenv("GEMINI_API_KEY")
+
+# Stable Direct REST API URL for Gemini 1.5 Flash
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -25,40 +27,29 @@ def ask():
             return jsonify({'error': 'No question provided'}), 400
             
         if not API_KEY:
-            return jsonify({'error': 'OpenRouter API Key is missing on the server!'}), 500
+            return jsonify({'error': 'Gemini API Key is missing on the server!'}), 500
         
-        # Switched to the ultra-stable, permanently free LLaMA-3 model
+        # Direct payload structured for Google API
         payload = {
-            "model": "meta-llama/llama-3-8b-instruct:free",
-            "messages": [
-                {"role": "system", "content": "You are a highly logical AI study assistant. Explain concepts step-by-step using first principles."},
-                {"role": "user", "content": user_doubt}
-            ]
+            "contents": [{"parts": [{"text": user_doubt}]}]
         }
         
-        headers = {
-            'Content-Type': 'application/json',
-            'Authorization': f'Bearer {API_KEY}',
-            'HTTP-Referer': 'https://ldkskjd6-max.github.io', # Required by OpenRouter
-            'X-Title': 'AI Doubt Solver' # Required by OpenRouter
-        }
-        
-        response = requests.post(OPENROUTER_URL, json=payload, headers=headers)
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(GEMINI_URL, json=payload, headers=headers)
         response_data = response.json()
         
         if response.status_code == 200:
-            # OpenRouter standard OpenAI-like response parsing
-            answer = response_data['choices'][0]['message']['content']
+            answer = response_data['candidates'][0]['content']['parts'][0]['text']
             return jsonify({'answer': answer})
         else:
-            return jsonify({'error': str(response_data)}), response.status_code
+            return jsonify({'error': str(response_data.get('error', 'API Error'))}), response.status_code
             
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 @app.route('/', methods=['GET'])
 def health_check():
-    return "AI Backend is running smoothly on OpenRouter LLaMA-3!", 200
+    return "AI Backend is running smoothly on fresh Gemini API!", 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
