@@ -27,9 +27,9 @@ def ask():
         if not API_KEY:
             return jsonify({'error': 'OpenRouter API Key is missing on the server!'}), 500
         
-        # Using a guaranteed FREE model on OpenRouter
+        # Switched to the ultra-stable, permanently free LLaMA-3 model
         payload = {
-            "model": "google/gemini-2.0-flash-lite-preview-02-05:free",
+            "model": "meta-llama/llama-3-8b-instruct:free",
             "messages": [
                 {"role": "system", "content": "You are a highly logical AI study assistant. Explain concepts step-by-step using first principles."},
                 {"role": "user", "content": user_doubt}
@@ -58,7 +58,7 @@ def ask():
 
 @app.route('/', methods=['GET'])
 def health_check():
-    return "AI Backend is running smoothly on OpenRouter!", 200
+    return "AI Backend is running smoothly on OpenRouter LLaMA-3!", 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
