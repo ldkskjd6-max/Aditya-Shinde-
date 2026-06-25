@@ -4,13 +4,17 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 app = Flask(__name__)
+
+# CORS configuration to allow requests from your GitHub Pages
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 API_KEY = os.getenv("GEMINI_API_KEY")
-# Direct Google API Endpoint
-GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
+
+# Updated explicitly to the latest stable gemini-2.0-flash via REST API
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={API_KEY}"
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -42,7 +46,7 @@ def ask():
 
 @app.route('/', methods=['GET'])
 def health_check():
-    return "AI Backend is running on Direct REST API!", 200
+    return "AI Backend is running on Direct REST API with Gemini 2.0!", 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
