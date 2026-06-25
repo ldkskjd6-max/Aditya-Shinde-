@@ -4,18 +4,15 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 app = Flask(__name__)
-
-# CORS configuration
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# DeepSeek API Key from Railway Environment Variables
-API_KEY = os.getenv("DEEPSEEK_API_KEY")
+# Now fetching from the Groq variable
+API_KEY = os.getenv("GROQ_API_KEY")
 
-# DeepSeek Chat Completions Endpoint
-DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
+# Groq's OpenAI-compatible endpoint
+GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -27,11 +24,11 @@ def ask():
             return jsonify({'error': 'No question provided'}), 400
             
         if not API_KEY:
-            return jsonify({'error': 'DeepSeek API Key is missing on the server!'}), 500
+            return jsonify({'error': 'Groq API Key is missing on the server!'}), 500
         
-        # Standard Payload structure for DeepSeek (OpenAI compatible)
+        # Using Meta's powerful LLaMA 3 model hosted on Groq
         payload = {
-            "model": "deepseek-chat",
+            "model": "llama3-8b-8192",
             "messages": [
                 {"role": "system", "content": "You are a highly logical and conceptual AI study assistant. Explain concepts step-by-step."},
                 {"role": "user", "content": user_doubt}
@@ -43,10 +40,10 @@ def ask():
             'Authorization': f'Bearer {API_KEY}'
         }
         
-        response = requests.post(DEEPSEEK_URL, json=payload, headers=headers)
+        response = requests.post(GROQ_URL, json=payload, headers=headers)
         response_data = response.json()
         
-        # Checking for successful response
+        # Success check
         if response.status_code == 200:
             answer = response_data['choices'][0]['message']['content']
             return jsonify({'answer': answer})
@@ -58,7 +55,7 @@ def ask():
 
 @app.route('/', methods=['GET'])
 def health_check():
-    return "AI Backend is running smoothly on DeepSeek API!", 200
+    return "AI Backend is running smoothly on Groq LPU!", 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
