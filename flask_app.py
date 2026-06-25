@@ -4,15 +4,16 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 app = Flask(__name__)
+
+# CORS setup
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# Now fetching from the Groq variable
-API_KEY = os.getenv("GROQ_API_KEY")
-
-# Groq's OpenAI-compatible endpoint
-GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
+# Fetching OpenRouter API Key
+API_KEY = os.getenv("OPENROUTER_API_KEY")
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -24,27 +25,29 @@ def ask():
             return jsonify({'error': 'No question provided'}), 400
             
         if not API_KEY:
-            return jsonify({'error': 'Groq API Key is missing on the server!'}), 500
+            return jsonify({'error': 'OpenRouter API Key is missing on the server!'}), 500
         
-        # Using Meta's powerful LLaMA 3 model hosted on Groq
+        # Using a guaranteed FREE model on OpenRouter
         payload = {
-            "model": "llama3-8b-8192",
+            "model": "google/gemini-2.0-flash-lite-preview-02-05:free",
             "messages": [
-                {"role": "system", "content": "You are a highly logical and conceptual AI study assistant. Explain concepts step-by-step."},
+                {"role": "system", "content": "You are a highly logical AI study assistant. Explain concepts step-by-step using first principles."},
                 {"role": "user", "content": user_doubt}
             ]
         }
         
         headers = {
             'Content-Type': 'application/json',
-            'Authorization': f'Bearer {API_KEY}'
+            'Authorization': f'Bearer {API_KEY}',
+            'HTTP-Referer': 'https://ldkskjd6-max.github.io', # Required by OpenRouter
+            'X-Title': 'AI Doubt Solver' # Required by OpenRouter
         }
         
-        response = requests.post(GROQ_URL, json=payload, headers=headers)
+        response = requests.post(OPENROUTER_URL, json=payload, headers=headers)
         response_data = response.json()
         
-        # Success check
         if response.status_code == 200:
+            # OpenRouter standard OpenAI-like response parsing
             answer = response_data['choices'][0]['message']['content']
             return jsonify({'answer': answer})
         else:
@@ -55,7 +58,7 @@ def ask():
 
 @app.route('/', methods=['GET'])
 def health_check():
-    return "AI Backend is running smoothly on Groq LPU!", 200
+    return "AI Backend is running smoothly on OpenRouter!", 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
