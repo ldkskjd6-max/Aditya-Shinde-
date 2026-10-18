@@ -3,8 +3,8 @@ console.log("JS is running - Final Version with AI Doubt");
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded");
 
-    // ===== NEW: API URL for Railway backend =====
-    const API_URL = 'https://aditya-shinde-production.up.railway.app/ask';
+    // ===== UPDATED: API URL for Render backend =====
+    const API_URL = "https://aditya-shinde.onrender.com/ask";
 
     // ===== CURRENT YEAR =====
     const yearEl = document.getElementById("currentYear");
@@ -303,6 +303,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function formatText(line) {
+        // Escape basic HTML tags for safety, then convert **bold** into <strong>
+        const safeLine = line
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+        return safeLine.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    }
+
     function appendMessage(text, sender = 'user', isError = false) {
         if (!chatMessages) return;
         const msgDiv = document.createElement('div');
@@ -318,12 +327,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const paragraphs = text.split('\n').filter(p => p.trim() !== '');
         if (paragraphs.length === 0) {
             const p = document.createElement('p');
-            p.textContent = text;
+            p.innerHTML = formatText(text);
             bubble.appendChild(p);
         } else {
             paragraphs.forEach(para => {
                 const p = document.createElement('p');
-                p.textContent = para;
+                p.innerHTML = formatText(para);
                 bubble.appendChild(p);
             });
         }
@@ -346,7 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
         avatar.innerHTML = '<i class="fas fa-robot"></i>';
         const bubble = document.createElement('div');
         bubble.className = 'message-bubble';
-        bubble.innerHTML = '<i class="fas fa-spinner"></i> Processing...';
+        bubble.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Thinking... (Server wake-up may take a few seconds)';
         msgDiv.appendChild(avatar);
         msgDiv.appendChild(bubble);
         chatMessages.appendChild(msgDiv);
@@ -375,7 +384,6 @@ document.addEventListener("DOMContentLoaded", () => {
         showProcessing();
 
         try {
-            // ===== UPDATED: using API_URL constant =====
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
@@ -390,7 +398,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 let errorText = `Server error (${response.status})`;
                 try {
                     const errData = await response.json();
-                    if (errData && errData.error) errorText = errData.error;
+                    if (errData && errData.error) {
+                        errorText = typeof errData.error === 'object'
+                            ? (errData.error.message || JSON.stringify(errData.error))
+                            : errData.error;
+                    }
                 } catch (_) {}
                 appendMessage(`❌ ${errorText}`, 'ai', true);
                 return;
@@ -403,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
             removeProcessing();
             console.error('AI Doubt Solver Error:', error);
-            appendMessage('❌ Network error: Could not reach the AI service. Please check your connection and try again.', 'ai', true);
+            appendMessage('❌ Network error: Could not reach the AI service. Please wait 30 seconds for the free Render server to wake up and try again.', 'ai', true);
         } finally {
             chatInput.disabled = false;
             chatSendBtn.disabled = false;
@@ -423,3 +435,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+            
