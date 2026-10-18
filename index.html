@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Shri Dr. R. G. Rathod Arts & Science College | Student Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shri Dr. R. G. Rathod Arts & Science College | Student Information Portal</title>
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="./style.css" />
@@ -11,48 +11,68 @@
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Roboto+Slab:wght@500;600;700&display=swap" rel="stylesheet" />
 
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
 
+    <!-- ================= TOP INSTITUTIONAL BAR ================= -->
+    <div class="top-info-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-left">
+                <span><i class="fas fa-university"></i> Est. 1995</span>
+                <span class="bar-sep">|</span>
+                <span><i class="fas fa-award"></i> NAAC Accredited</span>
+                <span class="bar-sep">|</span>
+                <span><i class="fas fa-map-marker-alt"></i> Murtizapur, Dist. Akola</span>
+            </div>
+            <div class="top-bar-right">
+                <span><i class="fas fa-user-shield"></i> Student Initiative by <strong>Aditya Shinde</strong></span>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= HEADER ================= -->
     <header class="main-header">
         <div class="container header-content">
 
             <div class="college-brand">
+                <div class="brand-badge-row">
+                    <span class="portal-tag"><i class="fas fa-graduation-cap"></i> Official Student Portal</span>
+                </div>
                 <h1 class="college-name">
                     Shri Dr. R. G. Rathod Arts and Science College
                 </h1>
-                <p class="college-location">Murtizapur</p>
+                <p class="college-location">
+                    <i class="fas fa-location-dot"></i> Murtizapur &bull; Affiliated to SGBAU, Amravati
+                </p>
                 <p class="owner-badge">
                     <i class="fas fa-code"></i> Managed by <span>ADITYA SHINDE</span>
                 </p>
             </div>
 
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Main Navigation">
                 <ul class="nav-list">
                     <li>
                         <a href="#home" class="nav-link active">
-                            <i class="fas fa-home"></i> Home
+                            <i class="fas fa-home"></i> <span>Home</span>
                         </a>
                     </li>
                     <li>
                         <a href="#papers" class="nav-link">
-                            <i class="fas fa-file-pdf"></i> Papers
+                            <i class="fas fa-file-pdf"></i> <span>Question Papers</span>
                         </a>
                     </li>
                     <li>
                         <a href="#physics" class="nav-link">
-                            <i class="fas fa-flask"></i> Physics
+                            <i class="fas fa-atom"></i> <span>Physics Hub</span>
                         </a>
                     </li>
-                    <!-- NEW AI DOUBT LINK -->
                     <li>
                         <a href="#ai-doubt" class="nav-link">
-                            <i class="fas fa-robot"></i> AI Doubt
+                            <i class="fas fa-robot"></i> <span>AI Doubt Solver</span>
                         </a>
                     </li>
                 </ul>
@@ -61,23 +81,53 @@
         </div>
     </header>
 
-    <!-- ================= MAIN ================= -->
+    <!-- ================= MAIN CONTENT ================= -->
     <main class="container main-content">
 
         <!-- ===== HOME SECTION ===== -->
         <section id="home" class="section active-section">
+
+            <!-- Clean Professional Hero Banner -->
             <div class="hero-box">
-                <h1>Student Information Portal</h1>
-                <p>Shri Dr. R. G. Rathod Arts & Science College, Murtizapur</p>
                 <div class="hero-badge">
-                    <span><i class="fas fa-calendar-alt"></i> Academic Year 2025-26</span>
-                    <span><i class="fas fa-graduation-cap"></i> B.Sc. / B.A.</span>
+                    <span><i class="fas fa-calendar-alt"></i> Academic Session 2025–26</span>
+                    <span><i class="fas fa-user-graduate"></i> B.Sc. &amp; B.A. Streams</span>
+                    <span><i class="fas fa-check-circle"></i> SGBAU Curriculum</span>
+                </div>
+                <h1>Student Academic &amp; Information Portal</h1>
+                <p>Shri Dr. R. G. Rathod Arts &amp; Science College, Murtizapur — One-stop digital platform for university notices, previous year papers, Physics lectures, and AI study assistance.</p>
+            </div>
+
+            <!-- Quick Overview / Portal Highlights Grid -->
+            <div class="quick-stats-grid">
+                <div class="stat-card" onclick="document.querySelector('a[href=\'#papers\']').click()">
+                    <div class="stat-icon"><i class="fas fa-file-invoice"></i></div>
+                    <div class="stat-info">
+                        <h4>PYQ Archive</h4>
+                        <p>Semester-wise Question Papers (Physics, Computer, AEC, VSC, IKS)</p>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="document.querySelector('a[href=\'#physics\']').click()">
+                    <div class="stat-icon"><i class="fas fa-play-circle"></i></div>
+                    <div class="stat-info">
+                        <h4>Physics Video Lab</h4>
+                        <p>13+ Curated Lectures on Surface Tension, Viscosity &amp; Fluid Mechanics</p>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="document.querySelector('a[href=\'#ai-doubt\']').click()">
+                    <div class="stat-icon"><i class="fas fa-brain"></i></div>
+                    <div class="stat-info">
+                        <h4>24/7 AI Tutor</h4>
+                        <p>Instant academic doubt solving for Science, Math &amp; Coding</p>
+                    </div>
                 </div>
             </div>
 
+            <!-- Urgent Exam Notice Card -->
             <div class="notice-card important-notice">
                 <div class="notice-ribbon">
-                    <span><i class="fas fa-exclamation-triangle"></i> URGENT NOTICE</span>
+                    <span><i class="fas fa-exclamation-triangle"></i> URGENT EXAMINATION NOTICE</span>
+                    <span class="ribbon-date"><i class="fas fa-clock"></i> Priority Update</span>
                 </div>
                 <div class="notice-content">
                     <div class="notice-icon">
@@ -86,28 +136,28 @@
                     <div class="notice-text">
                         <h3>Summer 2026 Examination Form Submission</h3>
                         <p class="notice-audience">
-                            <i class="fas fa-users"></i> All regular Semester-II students and backlog Semester-I students
+                            <i class="fas fa-users"></i> <strong>Target Students:</strong> All regular Semester-II students and backlog Semester-I students
                         </p>
                         <div class="notice-message">
-                            <p>are informed to fill the Summer 2026 Examination Form online at:</p>
+                            <p>All eligible students are hereby informed to fill out their <strong>Summer 2026 University Examination Form</strong> online via the official SGBAU portal:</p>
                             <div class="notice-link">
-                                <a href="https://sgbau.ucanapply.com" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i> sgbau.ucanapply.com
+                                <a href="https://sgbau.ucanapply.com" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-globe"></i> sgbau.ucanapply.com <i class="fas fa-external-link-alt"></i>
                                 </a>
                             </div>
                             <div class="notice-instructions">
-                                <p><i class="fas fa-print"></i> After filling the form, take the printout and submit it to the college office with the required examination fee within the scheduled time.</p>
-                                <p class="important"><i class="fas fa-exclamation-circle"></i> <strong>Important:</strong> Students must submit the form printout; otherwise the examination seat number will not be issued.</p>
-                                <p><i class="fas fa-clock"></i> Some courses may require a late fee of Rs. 400 while submitting the form.</p>
+                                <p><i class="fas fa-print"></i> <span><strong>Step 1 (Submission):</strong> After filling out the online form, take a clear printout and submit it to the college office along with the required examination fee within the scheduled time.</span></p>
+                                <p class="important"><i class="fas fa-exclamation-circle"></i> <span><strong>Mandatory Requirement:</strong> Students must submit the physical form printout at the office; otherwise, the examination seat number (Admit Card) will not be issued.</span></p>
+                                <p><i class="fas fa-rupee-sign"></i> <span><strong>Late Fee Alert:</strong> Some courses may attract a late fee of Rs. 400/- if submitted after the regular window.</span></p>
                             </div>
                         </div>
                         <div class="notice-footer">
                             <div class="notice-date">
-                                <i class="fas fa-calendar-check"></i> Date: 08 March 2026
+                                <i class="fas fa-calendar-check"></i> Published Date: <strong>08 March 2026</strong>
                             </div>
                             <div class="notice-actions">
                                 <button class="btn-notice" onclick="window.open('https://sgbau.ucanapply.com', '_blank')">
-                                    <i class="fas fa-external-link-alt"></i> Apply Now
+                                    <i class="fas fa-external-link-alt"></i> Fill Exam Form Online
                                 </button>
                             </div>
                         </div>
@@ -115,26 +165,29 @@
                 </div>
             </div>
 
+            <!-- Platform Profile & Welcome Banner -->
             <div class="welcome-message">
                 <div class="welcome-icon">
-                    <i class="fas fa-hand-peace"></i>
+                    <i class="fas fa-shield-halved"></i>
                 </div>
                 <div class="welcome-text">
-                    <h3>Welcome to Student Platform</h3>
-                    <p>This platform provides transparent access to official college notices and academic resources for students.</p>
+                    <h3>About This Student Information Platform</h3>
+                    <p>Designed to provide fast, structured, and transparent access to college announcements, university exam schedules, and verified study materials for every student.</p>
                 </div>
                 <div class="ownership-note">
                     <p>
-                        <i class="fas fa-user-circle"></i>
-                        <strong>Platform Profile:</strong>
-                        Independently created & maintained by <strong>Aditya Shinde</strong>
+                        <i class="fas fa-code-branch"></i>
+                        <strong>Developed &amp; Maintained by:</strong>
+                        <span>Aditya Shinde</span>
                     </p>
                 </div>
             </div>
 
+            <!-- Dynamic Notices Board -->
             <div class="section-header">
-                <h2>Other Notices</h2>
+                <h2><i class="fas fa-bullhorn"></i> Department &amp; Campus Announcements</h2>
                 <div class="section-divider"></div>
+                <p class="section-subtitle">Official updates and academic schedules</p>
             </div>
             <div id="noticesContainer" class="notices-container"></div>
         </section>
@@ -144,28 +197,32 @@
             <div class="section-header">
                 <h2><i class="fas fa-folder-open"></i> Previous Year Question Papers</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">B.Sc. First Year - Semester I (2024)</p>
+                <p class="section-subtitle">B.Sc. First Year &bull; Semester I Examination Archive (2024)</p>
             </div>
 
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchPapers" class="search-input" placeholder="Search papers by title, subject or year..." />
-            </div>
+            <div class="papers-toolbar">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchPapers" class="search-input" placeholder="Search question papers by subject, title, or year..." />
+                </div>
 
-            <div class="filter-tabs">
-                <button class="filter-btn active" data-filter="all">All Papers</button>
-                <button class="filter-btn" data-filter="Physics">Physics</button>
-                <button class="filter-btn" data-filter="Computer">Computer</button>
-                <button class="filter-btn" data-filter="AEC">AEC</button>
-                <button class="filter-btn" data-filter="VSC">VSC</button>
-                <button class="filter-btn" data-filter="IKS">IKS</button>
-            </div>
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">All Subjects</button>
+                    <button class="filter-btn" data-filter="Physics">Physics</button>
+                    <button class="filter-btn" data-filter="Computer">Computer Science</button>
+                    <button class="filter-btn" data-filter="AEC">AEC</button>
+                    <button class="filter-btn" data-filter="VSC">VSC</button>
+                    <button class="filter-btn" data-filter="IKS">IKS</button>
+                </div>
 
-            <div id="papersStats" class="papers-stats"></div>
+                <div class="stats-row">
+                    <div id="papersStats" class="papers-stats"></div>
+                </div>
+            </div>
 
             <div id="papersContainer" class="papers-grid">
                 <div class="loading-spinner">
-                    <i class="fas fa-spinner"></i> Loading papers...
+                    <i class="fas fa-spinner"></i> Loading question papers...
                 </div>
             </div>
         </section>
@@ -173,36 +230,72 @@
         <!-- ===== PHYSICS SECTION ===== -->
         <section id="physics" class="section">
             <div class="section-header">
-                <h2><i class="fas fa-flask"></i> Physics Department</h2>
+                <h2><i class="fas fa-atom"></i> Department of Physics — Digital Learning Hub</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">B.Sc. First Year - Semester II</p>
+                <p class="section-subtitle">B.Sc. First Year &bull; Semester II Video Lectures &amp; Topic Modules</p>
             </div>
 
             <div class="unit-tabs">
-                <span class="unit-tab" data-unit="1">Unit 1</span>
-                <span class="unit-tab" data-unit="2">Unit 2</span>
-                <span class="unit-tab" data-unit="3">Unit 3</span>
-                <span class="unit-tab active" data-unit="4">Unit 4: Surface Tension</span>
+                <span class="unit-tab" data-unit="1"><i class="fas fa-book-open"></i> Unit 1</span>
+                <span class="unit-tab" data-unit="2"><i class="fas fa-book-open"></i> Unit 2</span>
+                <span class="unit-tab" data-unit="3"><i class="fas fa-book-open"></i> Unit 3</span>
+                <span class="unit-tab active" data-unit="4"><i class="fas fa-video"></i> Unit 4: Surface Tension &amp; Viscosity</span>
             </div>
 
-            <div id="unit1Content" class="unit-content"><p>Unit 1 content coming soon...</p></div>
-            <div id="unit2Content" class="unit-content"><p>Unit 2 content coming soon...</p></div>
-            <div id="unit3Content" class="unit-content"><p>Unit 3 content coming soon...</p></div>
+            <div id="unit1Content" class="unit-content">
+                <div class="empty-state">
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3>Unit 1 Study Module</h3>
+                    <p>Structured notes and topic lectures for Unit 1 are being compiled and will be updated soon.</p>
+                </div>
+            </div>
+
+            <div id="unit2Content" class="unit-content">
+                <div class="empty-state">
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3>Unit 2 Study Module</h3>
+                    <p>Structured notes and topic lectures for Unit 2 are being compiled and will be updated soon.</p>
+                </div>
+            </div>
+
+            <div id="unit3Content" class="unit-content">
+                <div class="empty-state">
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3>Unit 3 Study Module</h3>
+                    <p>Structured notes and topic lectures for Unit 3 are being compiled and will be updated soon.</p>
+                </div>
+            </div>
+
             <div id="unit4Content" class="unit-content active-unit">
-                <h3 style="margin-bottom: 1rem;">Unit 4: Surface Tension & Related Topics</h3>
+                <div class="unit-banner">
+                    <div>
+                        <h3><i class="fas fa-water"></i> Unit 4: Surface Tension, Viscosity &amp; Fluid Mechanics</h3>
+                        <p>Complete step-by-step video lectures covering molecular theory, capillary rise, Reynolds number, Stokes' law, and Poiseuille's equation.</p>
+                    </div>
+                    <span class="unit-lecture-count"><i class="fas fa-play"></i> 13 Video Lectures</span>
+                </div>
                 <div class="videos-grid" id="videosGrid"></div>
             </div>
         </section>
 
-        <!-- ===== NEW: AI DOUBT SOLVER SECTION ===== -->
+        <!-- ===== AI DOUBT SOLVER SECTION ===== -->
         <section id="ai-doubt" class="section">
             <div class="section-header">
-                <h2><i class="fas fa-robot"></i> AI Doubt Solver</h2>
+                <h2><i class="fas fa-robot"></i> AI Academic Doubt Solver</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">Ask any academic question — get instant AI-powered answers</p>
+                <p class="section-subtitle">Ask any question in Physics, Computer Science, Mathematics, or Exam Preparation</p>
             </div>
 
             <div class="chat-wrapper">
+                <!-- Chat Header Bar -->
+                <div class="chat-top-bar">
+                    <div class="chat-status-indicator">
+                        <span class="status-dot"></span>
+                        <strong>AI Study Assistant</strong>
+                        <span class="status-badge">Online &bull; Gemini Flash Powered</span>
+                    </div>
+                </div>
+
                 <!-- Chat Messages -->
                 <div class="chat-messages" id="chatMessages">
                     <div class="message ai">
@@ -210,7 +303,8 @@
                             <i class="fas fa-robot"></i>
                         </div>
                         <div class="message-bubble">
-                            <p>👋 Hello! I'm your AI study assistant. Ask me anything about Physics, Chemistry, Mathematics, or any academic topic. I'll do my best to help you!</p>
+                            <p>👋 <strong>Hello! I'm your AI Study Assistant.</strong></p>
+                            <p>Ask me any topic or doubt from <strong>Physics, Computer Science, Chemistry, Mathematics</strong>, or your B.Sc. syllabus — I'll explain it step-by-step!</p>
                         </div>
                     </div>
                 </div>
@@ -222,15 +316,15 @@
                             type="text"
                             id="chatInput"
                             class="chat-input"
-                            placeholder="Type your doubt here..."
+                            placeholder="Type your academic question here (e.g., Explain Stokes' Law or Stack in Data Structures)..."
                             autocomplete="off"
                         />
-                        <button id="chatSendBtn" class="chat-send-btn">
+                        <button id="chatSendBtn" class="chat-send-btn" title="Send Question">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
                     <p class="chat-footer-note">
-                        <i class="fas fa-shield-alt"></i> Powered by AI · Responses are generated for educational guidance
+                        <i class="fas fa-shield-alt"></i> Powered by AI &bull; Responses are generated for educational guidance
                     </p>
                 </div>
             </div>
@@ -243,28 +337,28 @@
         <div class="container footer-content">
             <div class="footer-college-info">
                 <h3>Shri Dr. R. G. Rathod Arts and Science College</h3>
-                <p>Murtizapur | Student Platform</p>
-                <p class="footer-established">Est. 1995 | NAAC Accredited</p>
+                <p><i class="fas fa-map-pin"></i> Murtizapur, District Akola (Maharashtra) | Student Information Platform</p>
+                <p class="footer-established"><i class="fas fa-certificate"></i> Est. 1995 &bull; NAAC Accredited &bull; Affiliated to SGBAU, Amravati</p>
             </div>
 
             <div class="footer-ownership">
-                <p><strong><i class="fas fa-code"></i> Created by ADITYA SHINDE</strong></p>
+                <p class="creator-tag"><strong><i class="fas fa-code"></i> Architected &amp; Created by ADITYA SHINDE</strong></p>
                 <p class="footer-note">
-                    Independent student platform. Not officially affiliated with the college.
+                    Independent student-led academic portal built for student welfare and learning. Not an official administrative website of the college.
                 </p>
                 <div class="footer-social">
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/ldkskjd6-max" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#home" class="social-link" title="Back to Top"><i class="fas fa-arrow-up"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; <span id="currentYear"></span> Student Platform. All rights reserved.</p>
+            <p>&copy; <span id="currentYear"></span> Student Information Platform &bull; Managed by Aditya Shinde. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="./script.js"></script>
 </body>
-</html>
+    </html>
+    
