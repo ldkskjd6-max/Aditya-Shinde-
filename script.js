@@ -1,9 +1,9 @@
-console.log("JS is running - Final Version with AI Doubt");
+console.log("JS is running - Final Pro UI Version with AI Doubt");
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded");
 
-    // ===== UPDATED: API URL for Render backend =====
+    // ===== RENDER BACKEND API URL =====
     const API_URL = "https://aditya-shinde.onrender.com/ask";
 
     // ===== CURRENT YEAR =====
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             date: "2026-01-12",
             title: "Department of Physics",
-            description: "All the students are hereby informed that As per the University Academic calendar, your semester session started from 26 December 2025, it is mandatory to attend the classes of Theory and Practical for Internal Assessment and Examination Procedure, attend the classes regularly."
+            description: "All the students are hereby informed that as per the University Academic calendar, your semester session started from 26 December 2025. It is mandatory to attend the classes of Theory and Practical for Internal Assessment and Examination Procedure. Please attend classes regularly."
         }
     ];
 
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.className = "notice-card";
                 card.innerHTML = `
                     <div class="notice-header">
-                        <h3>${n.title}</h3>
-                        <small>${new Date(n.date).toDateString()}</small>
+                        <h3><i class="fas fa-thumbtack" style="color: #fbbf24; margin-right: 6px;"></i> ${n.title}</h3>
+                        <small><i class="far fa-calendar-alt"></i> ${new Date(n.date).toDateString()}</small>
                     </div>
                     <div class="notice-body">
                         <p>${n.description}</p>
@@ -50,19 +50,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== PHYSICS VIDEOS DATA (Unit 4) =====
     const videos = [
-        { title: "Fundamentals of surface tension", videoId: "gBWfxWdOaCk" },
-        { title: "Surface tension", videoId: "I8xFVGdkkUU" },
-        { title: "Molecular theory of surface tension", videoId: "1nsOVNIiyLA" },
-        { title: "Surface film", videoId: "M8wsuln-6Og" },
-        { title: "Surface energy", videoId: "FLXURvhLxiY" },
-        { title: "Access pressure inside soap bubble and liquid drop in air", videoId: "95Jomq0lvBg" },
-        { title: "Angle of contact", videoId: "fLPGkw2rz1o" },
-        { title: "Rise of Liquid Capillary Tube", videoId: "HBjc80Zbi7o" },
-        { title: "Viscosity", videoId: "sY8hV46aIps" },
-        { title: "Reynolds Number 'R'", videoId: "RZ3rLK4bIQ4" },
-        { title: "Stokes' law", videoId: "2odVI4Vc5UE" },
-        { title: "Terminal Velocity", videoId: "yXqeagd9PTQ" },
-        { title: "Poiseuille's equation", videoId: "xwyssfQ6oVc" }
+        { title: "1. Fundamentals of Surface Tension", videoId: "gBWfxWdOaCk" },
+        { title: "2. Surface Tension — Concept & Examples", videoId: "I8xFVGdkkUU" },
+        { title: "3. Molecular Theory of Surface Tension", videoId: "1nsOVNIiyLA" },
+        { title: "4. Surface Film & Potential Energy", videoId: "M8wsuln-6Og" },
+        { title: "5. Surface Energy & Relation with Tension", videoId: "FLXURvhLxiY" },
+        { title: "6. Excess Pressure Inside Soap Bubble & Liquid Drop", videoId: "95Jomq0lvBg" },
+        { title: "7. Angle of Contact & Wetting Properties", videoId: "fLPGkw2rz1o" },
+        { title: "8. Rise of Liquid in a Capillary Tube", videoId: "HBjc80Zbi7o" },
+        { title: "9. Viscosity & Coefficient of Viscosity", videoId: "sY8hV46aIps" },
+        { title: "10. Reynolds Number (R) & Critical Velocity", videoId: "RZ3rLK4bIQ4" },
+        { title: "11. Stokes' Law & Derivation", videoId: "2odVI4Vc5UE" },
+        { title: "12. Terminal Velocity Expression", videoId: "yXqeagd9PTQ" },
+        { title: "13. Poiseuille's Equation for Liquid Flow", videoId: "xwyssfQ6oVc" }
     ];
 
     // ===== RENDER VIDEO CARDS =====
@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         height="100%" 
                         src="https://www.youtube.com/embed/${video.videoId}" 
                         title="${video.title}"
+                        loading="lazy"
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
@@ -138,14 +139,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (statsContainer) {
             const totalPapers = allPapers.length;
             const showingPapers = filteredPapers.length;
-            statsContainer.innerHTML = `📄 Showing ${showingPapers} of ${totalPapers} papers`;
+            statsContainer.innerHTML = `📄 Showing <strong>${showingPapers}</strong> of <strong>${totalPapers}</strong> question papers`;
         }
 
         if (filteredPapers.length === 0) {
             papersContainer.innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-search"></i>
-                    <p>No papers found matching your criteria.</p>
+                    <h3>No Matching Papers Found</h3>
+                    <p>Try clearing your search filter or selecting 'All Subjects'.</p>
                 </div>
             `;
             return;
@@ -166,15 +168,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div class="paper-body">
                     <div class="paper-details">
-                        <i class="fas fa-book"></i>
-                        <span>Semester ${paper.semester}</span>
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>B.Sc. Semester ${paper.semester}</span>
                     </div>
                     <div class="paper-actions">
                         <a href="${filePath}" target="_blank" class="paper-download">
-                            <i class="fas fa-download"></i> Download
+                            <i class="fas fa-download"></i> Download PDF
                         </a>
-                        <a href="${filePath}" target="_blank" class="paper-preview" title="Preview">
-                            <i class="fas fa-eye"></i>
+                        <a href="${filePath}" target="_blank" class="paper-preview" title="View in Browser">
+                            <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
                 </div>
@@ -183,17 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Load papers
     const papersContainer = document.getElementById('papersContainer');
     if (papersContainer) {
-        papersContainer.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner"></i> Loading papers...</div>';
+        papersContainer.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner"></i> Loading question papers...</div>';
         fetchPapers().then(papers => {
             allPapers = papers;
             renderPapers();
         });
     }
 
-    // Search input
     const searchInput = document.getElementById('searchPapers');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -202,7 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Filter buttons
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -231,6 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.classList.add("active");
             }
         });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     navLinks.forEach(link => {
@@ -304,12 +304,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function formatText(line) {
-        // Escape basic HTML tags for safety, then convert **bold** into <strong>
         const safeLine = line
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;");
-        return safeLine.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+        return safeLine
+            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+            .replace(/`(.*?)`/g, "<code style='background:#f1f5f9;padding:2px 5px;border-radius:4px;font-size:0.88em;'>$1</code>");
     }
 
     function appendMessage(text, sender = 'user', isError = false) {
@@ -435,4 +436,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-            
