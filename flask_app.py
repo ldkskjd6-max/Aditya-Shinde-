@@ -14,8 +14,12 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 # Fetching the fresh Gemini API Key
 API_KEY = os.getenv("GEMINI_API_KEY")
 
-# UPDATED: Switched to gemini-2.5-flash as required by Google API
-GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={API_KEY}"
+# Primary model gemini-3.0-flash with automatic fallback to gemini-flash-latest
+MODELS_TO_TRY = [
+    "gemini-3.0-flash",
+    "gemini-flash-latest",
+    "gemini-3.0-pro"
+]
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -29,27 +33,36 @@ def ask():
         if not API_KEY:
             return jsonify({'error': 'Gemini API Key is missing on the server!'}), 500
         
-        # Direct payload structured for Google API
         payload = {
             "contents": [{"parts": [{"text": user_doubt}]}]
         }
-        
         headers = {'Content-Type': 'application/json'}
-        response = requests.post(GEMINI_URL, json=payload, headers=headers)
-        response_data = response.json()
         
-        if response.status_code == 200:
-            answer = response_data['candidates'][0]['content']['parts'][0]['text']
-            return jsonify({'answer': answer})
-        else:
-            return jsonify({'error': str(response_data.get('error', 'API Error'))}), response.status_code
+        last_error = None
+        for model_name in MODELS_TO_TRY:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={API_KEY}"
+            response = requests.post(url, json=payload, headers=headers)
+            response_data = response.json()
+            
+            if response.status_code == 200:
+                answer = response_data['candidates'][0]['content']['parts'][0]['text']
+                return jsonify({'answer': answer})
+            else:
+                last_error = response_data.get('error', 'API Error')
+                # Agar model naam ki wajah se 404 aaye toh agla model try karo
+                if response.status_code == 404:
+                    continue
+                else:
+                    return jsonify({'error': str(last_error)}), response.status_code
+        
+        return jsonify({'error': str(last_error)}), 404
             
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 @app.route('/', methods=['GET'])
 def health_check():
-    return "AI Backend is running smoothly on Gemini 2.5 Flash!", 200
+    return "AI Backend is running smoothly on Gemini 3.0 Flash!", 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
